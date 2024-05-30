@@ -1,0 +1,45 @@
+:root {
+	--u: 1.5vmin;
+	--clr: #777;
+	--bg: #444857;
+}
+body {
+	margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+	position: relative;
+    width: 5vw;
+    height: 5vw;
+}
+
+input { 
+    display: none; 
+}	
+
+label i {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	animation: dislike 0.5s ease 0s;
+    color: var(--clr);
+}
+
+
+input:checked + label i {
+	--clr: #ff3c41; 
+	animation: like 0.5s ease 0s;
+}
+
+
+@keyframes like {
+	75% { transform: scale(1.25); }
+}
+@keyframes dislike {
+	75% { transform: scale(0.75); }
+}

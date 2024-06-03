@@ -1,11 +1,9 @@
 .tarjeta__body{
 	display: block;
 	position: center;
-	/* font-family: 'Space Mono', monospace; */
 	background-color: rgb(240, 244, 247);
 	background: #f2f2f2;
 	height: 60vh;
-	
 }
 
 
@@ -45,6 +43,7 @@
 
 }
 
+/* circulos */
 .tarjeta__mdl{
 	height: auto;
 	width: 420px;
@@ -55,21 +54,10 @@
 
 }
 
-.tarjeta__title{
-	font-family: 'Poppins', sans-serif;
-	font-size: 20px;
-	font-weight: 300;
-	padding-left: 30px;
-	padding-bottom: 20px;
-	color: #000;
-	width: 420px;
-	line-height: 1.5em;
-	text-align: left;
-}
-
 .tarjeta__card {
-	height: 295px;
-	width: 420px;
+	display: flex;
+	height: 380px;
+	width: 460px;
 	border-radius: 20px;
 	background: #ffd700;
 	backdrop-filter: blur(35px);
@@ -227,12 +215,36 @@ input::placeholder{
 	overflow: hidden;
 }
 
+/* style.css */
+
+/* Estilos para el botón de guardar */
+.tarjeta__save-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.tarjeta__save-button button {
+    background-color: #4CAF50; /* Color de fondo */
+    border: none; /* Sin bordes */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Relleno */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Inline-block */
+    font-size: 16px; /* Tamaño de fuente */
+    margin: 4px 2px; /* Margen */
+    cursor: pointer; /* Cursor de puntero */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.tarjeta__save-button button:hover {
+    background-color: #45a049; /* Color de fondo al pasar el ratón */
+}
 
 
 /* inputs estilos */
 
 input {
-	/* font-family: 'Space Mono', monospace; */
 	border: none;
 	font-size: 16px;
 	height: 26px;
@@ -348,17 +360,6 @@ input[id="tarjeta__card-ccv"]:focus{
 	width: 50px;
 	
 }
-
-/* input[id="box-enviar"]{
-	background: #000;
-	color: #Fff;
-	display: inline-block;
-	position: relative;
-	left: 60vh;
-	margin-top: 10px;
-	border-radius: 5px;
-
-} */
 
 
 label {

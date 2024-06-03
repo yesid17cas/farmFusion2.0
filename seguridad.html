@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Tarjeta</title>
+    <title>Seguridad</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <!-- Favicon -->
@@ -17,9 +17,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="style/style.css" rel="stylesheet" /> 
+    <link href="style/style.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style/tarjeta.css"> 
+    <!-- Custom CSS for Form -->
+    <link href="style/seguridad.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -48,67 +49,29 @@
     </div>
     <!-- Navbar End -->
 
-    <!-- Contenido aqui -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <div class="tarjeta__body">
-        <div class="tarjeta__box">
-            <div class="tarjeta__mdl">
-                <div class="tarjeta__circles">
-                    <div class="circle circle-1"></div>
-                    <div class="circle circle-2"></div>
-                </div>
-                <div class="tarjeta__card">
-                    <form>
-                        <div class="tarjeta__logo">
-                            <?xml version="1.0" encoding="UTF-8"?>
-                            <svg width="48px" height="48px" viewBox="0 0 64 64" version="1.1">
-                                <title>Group</title>
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Group" fill="#FFFFFF">
-                                        <circle id="Oval" cx="16" cy="16" r="16"></circle>
-                                        <circle id="Oval" cx="16" cy="48" r="16"></circle>
-                                        <circle id="Oval" cx="48" cy="16" r="16"></circle>
-                                        <circle id="Oval" cx="48" cy="48" r="16"></circle>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="tarjeta__card-number">
-                            <label>Numero de tarjeta</label>
-                            <input id="tarjeta__card-number" placeholder="1234 1234 1234 1234" type="text" required maxlength="19">
-                            <span class="tarjeta__underline"></span>
-                        </div>
-                        <br>
-                        <div class="tarjeta__group">
-                            <div class="tarjeta__card-name">
-                                <label>Nombre</label>
-                                <input id="tarjeta__card-name" placeholder="Juanita" type="text" required>
-                                <span class="tarjeta__underline"></span>
-                            </div>
-                            <div class="tarjeta__expiration-date">
-                                <label>Fecha exp</label>
-                                <input id="tarjeta__card-exp" placeholder="10/25" type="text" maxlength="5" required>
-                                <span class="tarjeta__underline"></span>
-                            </div>
-                            <div class="tarjeta__ccv">
-                                <label>CVV</label>
-                                <input id="tarjeta__card-ccv" placeholder="123" type="text" maxlength="3" required>
-                                <span class="tarjeta__underline"></span>
-                            </div>
-                        </div>
-                        <!-- Botón de Guardar -->
-                        <div class="tarjeta__save-button">
-                            <button type="submit">Guardar</button>
-                        </div>
-                    </form>
-                </div>
+    <!-- Formulario Start -->
+    <div class="form-container">
+        <h2>Seguridad</h2>
+        <form>
+            <div class="form-group">
+                <label for="username">Ingrese Usuario</label>
+                <input type="text" id="username" name="username" required />
             </div>
-        </div>
+            <div class="form-group">
+                <label for="email">Ingrese Correo Electrónico</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+                <label for="securityCode">Ingrese Código de Seguridad</label>
+                <input type="password" id="securityCode" name="securityCode" required />
+            </div>
+            <div class="form-group">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
     </div>
+    <!-- Formulario End -->
 
-    <script src="./js/script.js"></script>
-    
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px">
         <div class="row pt-5">
@@ -167,27 +130,29 @@
                 <p><i class="fa fa-phone-alt mr-2"></i>+57 3193517255</p>
                 <p><i class="fa fa-envelope mr-2"></i>farmfusion8@gmail.com</p>
                 <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px">
-                    Suscríbete
+                    Ingresa
                 </h6>
                 <div class="w-100">
                     <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 30px" placeholder="Tu correo electrónico" />
+                        <input type="text" class="form-control border-light" style="padding: 25px"
+                            placeholder="Tu correo" />
                         <div class="input-group-append">
-                            <button class="btn btn-primary px-4">Suscríbete</button>
+                            <button class="btn btn-primary px-3">Registrate</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid bg-dark text-white-50 py-4 px-sm-3 px-lg-5">
-            <p class="m-0 text-center text-white-50">
-                &copy;
-                <a class="text-white" href="#">FarmFusion</a>. Todos los derechos
-                reservados.
-            </p>
-        </div>
     </div>
     <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>

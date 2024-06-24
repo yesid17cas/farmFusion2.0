@@ -1014,8 +1014,7 @@ h6 {
 /* Boton buscar */
 .buscar {
   position: relative;
-  padding: 5px;
-  left: 11vw;
+  padding: 9px;
 }
 
 .buscar input {
@@ -1037,7 +1036,7 @@ h6 {
   top: 0;
   right: 0;
   position: absolute;
-  background: #007bff;
+  background: var(--verde);
   text-align: center;
   color: white;
   font-size: 18px;
@@ -1166,7 +1165,7 @@ h6 {
   font-weight: 500;
 }
 .nav-container input[type="checkbox"]:checked ~ .menu-items {
-  transform: translateX(-87%);
+  transform: translateX(-4%);
 }
 
 .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {

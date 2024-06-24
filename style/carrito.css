@@ -74,10 +74,11 @@
     display: flex;
     justify-content: space-between;
     font-size: 1.3vw;
-    padding: 0 2vw 0 2vw;
+    padding: 1vw 2vw 0 2vw;
     background: #ffd700;
     border-radius: 1vw;
     border: none;
+    height: 4vw;
 }
 
 .botonPago:hover {

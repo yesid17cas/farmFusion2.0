@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <title>Farmfusion</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <!-- Favicon -->
-  <link href="images/Logo-2.0.ico" rel="icon" />
+  <link href="images/Logo-2.0.ico" rel="icon" /> 
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -18,7 +17,6 @@
 
   <!-- Customized Bootstrap Stylesheet -->
   <link href="style/style.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style/catalogo.css">
 </head>
 
 <body>
@@ -72,54 +70,126 @@
 	</header>
   <!-- Navbar End -->
 
-  <!-- Contenido aqui -->
-  <div class="containerCatalogo">
-
-    <h3 class="title"> vegetales y verduras frescas </h3>
-
-    <div class="products-container">
-      <a href="InfoProduc.html">
-        <div class="product" data-name="p-1">
-          <img src="images/1.png" alt="">
-          <h3>Fresas</h3>
-          <div class="price">$5.000</div>
+  <!-- Carousel Start -->
+  <div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="w-100" src="images/vege1.jpg" alt="Image" />
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+            <div class="p-3" style="max-width: 900px">
+              <h1 class="display-3 text-white mb-md-4">
+                ¡Descubre la frescura en cada bocado con nuestra selección de
+                vegetales directamente del campo a tu mesa!
+              </h1>
+              <a href="catalogo.html" class="btn btn-primary py-md-3 px-md-5 mt-2">Productos</a>
+            </div>
+          </div>
         </div>
-      </a>
-
-      <div class="product" data-name="p-2">
-        <img src="images/2.png" alt="">
-        <h3>cebollla</h3>
-        <div class="price">$4.000</div>
       </div>
-
-      <div class="product" data-name="p-3">
-        <img src="images/3.png" alt="">
-        <h3>tomates</h3>
-        <div class="price">$2.00</div>
-      </div>
-
-      <div class="product" data-name="p-4">
-        <img src="images/4.png" alt="">
-        <h3>Berenjena</h3>
-        <div class="price">$2.00</div>
-      </div>
-
-      <div class="product" data-name="p-5">
-        <img src="images/5.png" alt="">
-        <h3>Brócoli</h3>
-        <div class="price">$6.000</div>
-      </div>
-
-      <div class="product" data-name="p-6">
-        <img src="images/6.png" alt="">
-        <h3>papa capira </h3>
-        <div class="price">$2.000</div>
-      </div>
-
     </div>
-
   </div>
-  <!--  -->
+  <!-- Carousel End -->
+
+  <!-- Acerca de nosotros start -->
+  <div class="container-fluid py-5" id="farmFusionAcerca">
+    <div class="container pt-5 pb-3">
+      <div class="text-center mb-3 pb-3">
+        <h3 class="text-primary text-uppercase" style="letter-spacing: 5px">
+          Acerca de Nosotros
+        </h3>
+      </div>
+      <div class="row">
+        <p>
+           Buscamos facilitar la conexión directa entre productores locales y consumidores, garantizando la frescura y calidad de los productos ofrecidos, así mismo, luchamos por la justicia económica y social, velando por una remuneración económica justa para nuestros productores locales. <br>
+           Nuestra finalidad es optimizar y automatizar la gestión de los distintos procesos administrativos, tales como inventario, eventos, pedidos y gestión de información.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- Acerca de nosotros end -->
+
+  <!-- Team Start -->
+  <div class="container-fluid py-5" id="farmFusionTeam">
+    <div class="container pt-5 pb-3">
+      <div class="text-center mb-3 pb-3">
+        <h3 class="text-primary text-uppercase" style="letter-spacing: 5px">
+          TEAM
+        </h3>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+          <div class="team-item bg-white mb-4">
+            <div class="team-img position-relative overflow-hidden">
+              <img class="img-fluid w-100" src="" alt="" />
+              <div class="team-social">
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="text-center py-4">
+              <h5 class="text-truncate">Paula Arbeláez</h5>
+              <p class="m-0">Desarrolladora</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+          <div class="team-item bg-white mb-4">
+            <div class="team-img position-relative overflow-hidden">
+              <img class="img-fluid w-100" src="" alt="" />
+              <div class="team-social">
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="text-center py-4">
+              <h5 class="text-truncate">Juan Jose Castaño</h5>
+              <p class="m-0">Desarrollador</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+          <div class="team-item bg-white mb-4">
+            <div class="team-img position-relative overflow-hidden">
+              <img class="img-fluid w-100" src="" alt="" />
+              <div class="team-social">
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="text-center py-4">
+              <h5 class="text-truncate">Andres Céspedes</h5>
+              <p class="m-0">Desarrollador</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+          <div class="team-item bg-white mb-4">
+            <div class="team-img position-relative overflow-hidden">
+              <img class="img-fluid w-100" src="" alt="" />
+              <div class="team-social">
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="text-center py-4">
+              <h5 class="text-truncate">Yesid Castrillón</h5>
+              <p class="m-0">Desarrollador</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Team End -->
 
   <!-- Footer Start -->
   <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px">

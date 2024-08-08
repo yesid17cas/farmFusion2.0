@@ -13,7 +13,7 @@
                             ¡Descubre la frescura en cada bocado con nuestra selección de
                             vegetales directamente del campo a tu mesa!
                         </h1>
-                        <a href="login.html" class="btn btn-primary py-md-3 px-md-5 mt-2">Iniciar Sesión</a>
+                        <a href="index.html" class="btn btn-primary py-md-3 px-md-5 mt-2">Iniciar Sesión</a>
                     </div>
                 </div>
             </div>

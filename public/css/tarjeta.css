@@ -1,0 +1,368 @@
+.tarjeta__body{
+	display: block;
+	position: center;
+	background-color: rgb(240, 244, 247);
+	background: #f2f2f2;
+	height: 66vh;
+}
+
+
+
+
+/* animaciones */
+
+
+@keyframes explode {
+0% { opacity: 1; }
+100% { transform: scale(1.2); opacity: 0; }
+}
+@keyframes float {
+
+	0% {
+	-webkit-transform: rotateX(0deg) translateY(0px);
+	-moz-transform: rotateX(0deg) translateY(0px);
+	-ms-transform: rotateX(0deg) translateY(0px);
+	-o-transform: rotateX(0deg) translateY(0px);
+	transform: rotateX(0deg) translateY(0px);
+	}
+
+	50% {
+	-webkit-transform: rotateX(0deg) translateY(1px) translateX(5px);
+	-moz-transform: rotateX(0deg) translateY(10px) translateX(5px);
+	-ms-transform: rotateX(0deg) translateY(30px) translateX(5px);
+	-o-transform: rotateX(0deg) translateY(40px) translateX(5px);
+	transform: rotateX(0deg) translateY(10px) translateX(5px);
+}
+	100% {
+	-webkit-transform: rotateX(0deg) translateY(0px) translateX(1px);
+	-moz-transform: rotateX(0deg) translateY(0px) translateX(1px);
+	-ms-transform: rotateX(0deg) translateY(0px) translateX(1px);
+	-o-transform: rotateX(0deg) translateY(0px) translateX(1px);
+	transform: rotateX(0deg) translateY(0px) translateX(1px);
+	}
+
+}
+
+/* circulos */
+.tarjeta__mdl{
+	height: auto;
+	width: 420px;
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-60%,-60%);
+
+}
+
+.tarjeta__card {
+	display: flex;
+	height: 380px;
+	width: 460px;
+	border-radius: 20px;
+	background: #25cd53;
+	backdrop-filter: blur(35px);
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 0 80px rgba(0, 0, 0, 0.25);
+	padding: 30px 30px 30px 30px;
+	overflow: hidden;
+	margin-top: 17vh;
+}
+
+.tarjeta__logo{
+	padding-bottom: 40px;
+	opacity: 0.9;
+	
+}
+
+
+
+
+input[id="tarjeta__card-number"]{
+	font-size: 30px;
+	width: 100%;
+	height: 50px;
+}
+
+input[id="tarjeta__card-number"]::placeholder{
+	color: #000;
+	font-size: 30px;
+}
+
+input::placeholder{
+	color: #000;
+}
+
+
+
+.tarjeta__group{
+	display: inline-flex;
+	margin: 0;
+	padding: 0;
+}
+
+.tarjeta__card-number{ 
+	position:relative; 
+	display: inline-block;
+	overflow: hidden;
+	margin-bottom:30px; 
+	
+}
+
+.tarjeta__card-number > input[id="tarjeta__card-number"]{
+	border: none;
+	margin-bottom: 0px;
+	outline: none;
+}
+
+.tarjeta__card-name > input[id="tarjeta__card-name"]{
+	border: none;
+	margin-bottom: 0px;
+	outline: none;
+}
+
+.tarjeta__card-exp > input[id="tarjeta__card-exp"]{
+	border: none;
+	margin-bottom: 0px;
+	outline: none;
+}
+
+.tarjeta__card-ccv > input[id="tarjeta__card-ccv"]{
+	border: none;
+	margin-bottom: 0px;
+	outline: none;
+}
+
+/* linea del hover de los inputs */
+
+
+.tarjeta__underline{
+	transition: all 0.3s;
+	display: inline-block;
+	bottom: 0;
+	left: -100%;
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background-color: #000;
+}
+
+.tarjeta__card-number > input[id="tarjeta__card-number"]:hover + .tarjeta__underline
+{
+	left: 0; 
+}
+
+.tarjeta__card-number > input[id="tarjeta__card-number"]:focus + .tarjeta__underline
+{
+	left: 0; 
+}
+
+
+
+
+.tarjeta__card-name > input[id="tarjeta__card-name"]:hover + .tarjeta__underline{
+	left: 0; 
+}
+.tarjeta__card-name > input[id="tarjeta__card-name"]:focus + .tarjeta__underline{
+	left: 0; 
+}
+
+.tarjeta__expiration-date > input[id="tarjeta__card-exp"]:hover + .tarjeta__underline{
+	left: 0;
+}
+
+.tarjeta__expiration-date > input[id="tarjeta__card-exp"]:focus + .tarjeta__underline{
+	left: 0;
+}
+
+.tarjeta__ccv > input[id="tarjeta__card-ccv"]:hover + .tarjeta__underline{
+	left: 0;
+}
+
+.tarjeta__ccv > input[id="tarjeta__card-ccv"]:focus + .tarjeta__underline{
+	left: 0;
+}
+
+.tarjeta__card-name{ 
+	/* font-family: 'Space Mono', monospace; */
+	padding: 0px 80px  0px 0px;
+	margin-right: 40px;
+	width: 100px;
+	position:relative; 
+	display: inline-block;
+	overflow: hidden;
+}
+
+.tarjeta__expiration-date{
+	/* font-family: 'Space Mono', monospace; */
+	padding: 0px 0px 0px 0px; 
+	margin-right: 60px;
+	width: 80px;
+	position:relative; 
+	display: inline-block;
+	overflow: hidden;
+}
+
+.tarjeta__ccv{
+	/* font-family: 'Space Mono', monospace; */
+	padding: 0px 0px 0px 0px; 
+	margin-right: 0px;
+	width: 60px;
+	position:relative; 
+	display: inline-block;
+	overflow: hidden;
+}
+
+/* style.css */
+
+/* Estilos para el botón de guardar */
+.tarjeta__save-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.tarjeta__save-button button {
+    background-color: #fff; 
+    border: none; 
+    color: #000; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
+
+.tarjeta__save-button button:hover {
+    color: #25cd53a8 /* Color de fondo al pasar el ratón */
+}
+
+
+/* inputs estilos */
+
+input {
+	border: none;
+	font-size: 16px;
+	height: 26px;
+	color: #000;
+	background: 0;
+
+}
+
+input:focus{ 
+	border-bottom: 2px solid white;
+	outline: none;
+	border: none;
+	color: white;
+	font-size: 16px;
+	height: 30px;
+	margin-bottom: -2px;
+}
+
+input:hover{
+	border-bottom: 2px solid white;
+	color: #000;
+	margin-bottom: -2px;
+	font-size: 16px;
+	height: 30px;
+}
+
+
+
+input[id="tarjeta__card-number"]:focus
+{
+	border: none;
+	border-bottom: 2px solid white;
+	color: #000;
+	font-size: 30px;
+	height: 50px;
+	margin-bottom: -2px;
+	width: 400px;
+}
+
+input[id="tarjeta__card-number"]:hover
+{
+	border: none;
+	border-bottom: 2px solid white;
+	color: #000;
+	font-size: 30px;
+	height: 50px;
+	margin-bottom: -2px;
+	width: 400px;
+}
+
+input[id="tarjeta__card-name"]{
+	color: #000;
+	margin-bottom: -2px;
+	font-size: 16px;
+	height: 26px;
+	width: 160px;
+}
+
+input[id="tarjeta__card-name"]:hover{
+	border-bottom: 2px solid white;
+	color: #000;
+	margin-bottom: -2px;
+	font-size: 16px;
+	height: 26px;
+	width: 160px;
+}
+
+input[id="tarjeta__card-name"]:focus{
+	border-bottom: 2px solid white;
+	color: #000;
+	margin-bottom: -2px;
+	font-size: 16px;
+	height: 26px;
+	width: 160px;
+}
+
+input[id="tarjeta__card-exp"]:hover{
+	border-bottom: 2px solid white;
+	color: #000;
+	margin-bottom: -2px;
+	font-size: 16px;
+	height: 26px;
+	width: 80px;
+}
+
+input[id="tarjeta__card-exp"]:focus{
+	border-bottom: 2px solid white;
+	color: #000;
+	margin-bottom: -2px;
+	font-size: 16px;
+	height: 26px;
+	width: 80px;
+}
+
+input[id="tarjeta__card-ccv"]:hover{
+	border-bottom: 2px solid white;
+	color: #000;
+	margin-bottom: -2px;
+	font-size: 16px;
+	height: 26px;
+	width: 50px;
+	
+}
+
+input[id="tarjeta__card-ccv"]:focus{
+	border-bottom: 2px solid white;
+	color: #000;
+	margin-bottom: -2px;
+	font-size: 16px;
+	height: 26px;
+	width: 50px;
+	
+}
+
+
+label {
+	color: #000; 
+	font-size:12px;
+	font-weight:normal;
+	pointer-events:none;
+	display: block;
+	padding-bottom: 2px;
+
+}

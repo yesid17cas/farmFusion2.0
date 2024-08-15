@@ -11,10 +11,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                    <a href="" class="nav-item nav-link active">Inicio</a>
+                    <a href="{{route('home')}}" class="nav-item nav-link {{request()->routeIs('home') ? 'active' : ''}}">Inicio</a>
                     <a href="" class="nav-item nav-link">Acerca de Nosotros</a>
                     <a href="" class="nav-item nav-link">Team</a>
-                    <a href="" class="nav-item nav-link">Iniciar Sesión</a>
+                    <a href="{{route('')}}" class="nav-item nav-link">Iniciar Sesión</a>
                 </div>
             </div>
         </nav>

@@ -14,7 +14,6 @@ Route::view('/carrito','carrito')->name('carrito');
 Route::view('/cata','catalogo')->name('catalogo');
 Route::view('/perfil','verPerfil')->name('verPerfil');
 Route::view('/datos','Datos')->name('misDatos');
-Route::view('/tarjetas','terjetas')->name('tarjetas');
 
 
 

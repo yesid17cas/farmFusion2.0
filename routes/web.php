@@ -1,6 +1,8 @@
 <?php
 
 // use Illuminate\Routing\Route;
+use App\Http\Controllers\ProductoController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,7 @@ Route::view('/carrito','carrito')->name('carrito');
 Route::view('/cata','catalogo')->name('catalogo');
 Route::view('/perfil','verPerfil')->name('verPerfil');
 Route::view('/datos','Datos')->name('misDatos');
+Route::get('/catalogo', [ProductoController::class, 'index']);
 
 
 

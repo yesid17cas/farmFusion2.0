@@ -13,10 +13,9 @@ Route::view('/recuperar','olvidoClv')->name('recuperar');
 Route::view('/info','infoProduc')->name('info');
 Route::view('/tarjeta','tarjeta')->name('tarjeta');
 Route::view('/carrito','carrito')->name('carrito');
-Route::view('/cata','catalogo')->name('catalogo');
+Route::get('/catalogo', [ProductoController::class, 'index']);
 Route::view('/perfil','verPerfil')->name('verPerfil');
 Route::view('/datos','Datos')->name('misDatos');
-Route::get('/catalogo', [ProductoController::class, 'index']);
 
 
 

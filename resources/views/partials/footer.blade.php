@@ -41,7 +41,7 @@
                 <a class="text-white-50 mb-2" href="#">Catálogos digitales</a>
                 <a class="text-white-50 mb-2" href="#">Supermercado</a>
                 <a class="text-white-50 mb-2" href="#">Promoción</a>
-                <a class="text-white-50 mb-2" href="#">Sobre nosotros</a>
+                <a class="text-white-50 mb-2" href="{{route('home') . '#farmFusionAcerca'}}">Sobre nosotros</a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">

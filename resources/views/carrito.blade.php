@@ -93,5 +93,5 @@
 		</div>
 	</main>
 @section('style')
-<link rel="stylesheet" href="{{asset('css/carrito.css')}}">
+@vite('resources/css/carrito.css')
 @endsection

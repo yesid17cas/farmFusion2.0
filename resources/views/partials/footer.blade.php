@@ -14,10 +14,14 @@
                 Síguenos
             </h6>
             <div class="d-flex justify-content-start">
-                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-primary btn-square mr-2" href="https://x.com/FarmFusion29240"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a class="btn btn-outline-primary btn-square mr-2"
+                    href="https://www.facebook.com/profile.php?id=61564978311533"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-primary btn-square mr-2" href="https://www.youtube.com/@Farmfusion2024"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/farmfusion8/"><i
+                        class="fab fa-instagram"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
@@ -41,7 +45,7 @@
                 <a class="text-white-50 mb-2" href="#">Catálogos digitales</a>
                 <a class="text-white-50 mb-2" href="#">Supermercado</a>
                 <a class="text-white-50 mb-2" href="#">Promoción</a>
-                <a class="text-white-50 mb-2" href="{{route('home') . '#farmFusionAcerca'}}">Sobre nosotros</a>
+                <a class="text-white-50 mb-2" href="{{ route('home') . '#farmFusionAcerca' }}">Sobre nosotros</a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
@@ -59,7 +63,8 @@
             </h6>
             <div class="w-100">
                 <div class="input-group">
-                    <input type="text" class="form-control border-light" style="padding: 25px" placeholder="Tu correo" />
+                    <input type="text" class="form-control border-light" style="padding: 25px"
+                        placeholder="Tu correo" />
                     <div class="input-group-append">
                         <button class="btn btn-primary px-3">Regístrate</button>
                     </div>

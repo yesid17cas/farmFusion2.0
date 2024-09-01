@@ -3,7 +3,7 @@
 @section('content')
 <main>
     <div class="informacion">
-        <img src="images/1.png" alt="Producto" class="informacion__img" />
+        <img src="{{Vite::assets('resources/img/1.png')}}" alt="Producto" class="informacion__img" />
         <div class="informacion__datos">
             <b>
                 Fresas <br />
@@ -26,5 +26,5 @@
 @endsection
 
 @section('style')
-<link rel="stylesheet" href="{{asset('css/infoProduc.css')}}">
+@vite('resources/css/infoProduc.css')
 @endsection

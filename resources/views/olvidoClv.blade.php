@@ -16,8 +16,8 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
 	<!-- Customized Bootstrap Stylesheet -->
-	<link href="{{asset('css/style.css')}}" rel="stylesheet" />
-	<link rel="stylesheet" href="{{asset('css/olvidoClv.css')}}">
+	@vite('resources/css/style.css')
+	@vite('resources/css/olvidoClv.css')
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 	<title>Recuperar contraseña</title>
 </head>

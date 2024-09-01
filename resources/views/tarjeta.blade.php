@@ -64,5 +64,5 @@
 
 
 @section('style')
-<link rel="stylesheet" href="{{asset('css/tarjeta.css')}}">
+@vite('resources/css/tarjeta.css')
 @endsection

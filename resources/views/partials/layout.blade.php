@@ -2,37 +2,38 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title>Farmfusion</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="utf-8" />
+    <title>Farmfusion</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <!-- Favicon -->
-  <link href="images/Logo-2.0.ico" rel="icon" />
+    <!-- Favicon -->
+    <link href="images/Logo-2.0.ico" rel="icon" />
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
-
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="{{asset('css/style.css')}}" rel="stylesheet" />
-  @yield('style');
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Customized Bootstrap Stylesheet -->
+    @vite('resources/css/style.css')
+    @yield('style');
 
 </head>
 
 <body>
-  @include('partials.header')
+    @include('partials.header')
 
-  @yield('content')
+    @yield('content')
 
-  @include('partials.footer')
+    @include('partials.footer')
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-  <!-- Template Javascript -->
-  <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Template Javascript -->
+    @vite('resources/js/script.js')
 </body>
 
 </html>

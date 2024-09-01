@@ -7,7 +7,7 @@
             <div class="card p-4">
                 <div class="text-center">
                     <img
-                        src="/img/Agricultora.jpg"
+                        src="{{Vite::assets('resources/img/Agricultora.jpg')}}"
                         alt="Foto de perfil"
                         class="profile-img" />
                 </div>
@@ -39,6 +39,6 @@
 @endsection
 
 @section('style')
-<link rel="stylesheet" href="{{asset('css/perfil.css')}}">
+@vite('resources/css/perfil.css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 @endsection

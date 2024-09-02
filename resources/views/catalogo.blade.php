@@ -30,7 +30,7 @@
         <!-- Tercer Producto (posición 3 del array) -->
         @if(isset($productos[2]))
             <div class="product" data-name="p-3">
-                <img src="{{ Vite::asset('resources/img/3.jpg') }}" alt="">
+                <img src="{{ Vite::asset('resources/img/nose') }}" alt="">
                 <h3>{{ $productos[2]->name }}</h3>
                 <div class="price">${{ number_format($productos[2]->price, 0, ',', '.') }}</div>
             </div>
@@ -39,7 +39,7 @@
         <!-- Cuarto Producto (posición 4 del array) -->
         @if(isset($productos[3]))
             <div class="product" data-name="p-4">
-                <img src="{{ Vite::asset('resources/img/4.jpg') }}" alt="">
+                <img src="{{ Vite::asset('resources/img/nose') }}" alt="">
                 <h3>{{ $productos[3]->name }}</h3>
                 <div class="price">${{ number_format($productos[3]->price, 0, ',', '.') }}</div>
             </div>
@@ -48,7 +48,7 @@
         <!-- Quinto Producto (posición 5 del array) -->
         @if(isset($productos[4]))
             <div class="product" data-name="p-5">
-                <img src="{{ Vite::asset('resources/img/5.jpg') }}" alt="">
+                <img src="{{ Vite::asset('resources/img/nose') }}" alt="">
                 <h3>{{ $productos[4]->name }}</h3>
                 <div class="price">${{ number_format($productos[4]->price, 0, ',', '.') }}</div>
             </div>

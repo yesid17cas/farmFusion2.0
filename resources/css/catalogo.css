@@ -57,6 +57,28 @@
     color: #444;
 }
 
+/* Estilo para el botón de agregar producto */
+.button-container{
+    margin-top: 5vh;
+}
+.add-product-btn {
+    background-color: #25cd53;
+    color: white;
+    text-decoration: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-product-btn:hover {
+    background-color: #1f9b44;
+    color: #ffff;
+    text-decoration: none;
+}
+
 .products-preview {
     position: fixed;
     top: 0;

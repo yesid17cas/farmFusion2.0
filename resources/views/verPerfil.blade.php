@@ -7,7 +7,7 @@
             <div class="card p-4">
                 <div class="text-center">
                     <img
-                        src="{{Vite::assets('resources/img/Agricultora.jpg')}}"
+                        src="{{Vite::asset('resources/img/Agricultora.jpg')}}"
                         alt="Foto de perfil"
                         class="profile-img" />
                 </div>
@@ -26,9 +26,9 @@
                         </p>
                     </div>
                     <div class="buttons mt-3">
-                        <a href="#" class="btn btn-primary"><i class="fa-solid fa-user"></i> Mis datos</a>
+                        <a href="{{route('misDatos')}}" class="btn btn-primary"><i class="fa-solid fa-user"></i> Mis datos</a>
                         <a href="#" class="btn btn-primary"><i class="fa-solid fa-shield-alt"></i> Seguridad</a>
-                        <a href="#" class="btn btn-primary"><i class="fa-solid fa-credit-card"></i> Tarjetas</a>
+                        <a href="{{route('tarjeta')}}" class="btn btn-primary"><i class="fa-solid fa-credit-card"></i> Tarjetas</a>
                         <a href="#" class="btn btn-primary"><i class="fa-solid fa-map-marker-alt"></i> Direcciones</a>
                     </div>
                 </div>

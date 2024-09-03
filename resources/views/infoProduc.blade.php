@@ -3,7 +3,7 @@
 @section('content')
 <main>
     <div class="informacion">
-        <img src="{{Vite::assets('resources/img/1.png')}}" alt="Producto" class="informacion__img" />
+        <img src="{{Vite::asset('resources/img/1.png')}}" alt="Producto" class="informacion__img" />
         <div class="informacion__datos">
             <b>
                 Fresas <br />

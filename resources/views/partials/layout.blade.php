@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <!-- Favicon -->
-    <link href="images/Logo-2.0.ico" rel="icon" />
+    <link href="{{Vite::asset('resources/img/Logo-2.0.ico')}}" rel="icon" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -24,7 +24,11 @@
 </head>
 
 <body>
-    @include('partials.header')
+    @guest
+        @include('partials.header')
+    @else
+        @include('partials.headerLog')
+    @endguest
 
     @yield('content')
 

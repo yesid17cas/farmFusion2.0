@@ -229,3 +229,13 @@ input {
 	width: 40px;
 }
 
+.btn-back{
+	z-index: 5;
+	position: absolute;
+	padding-left: 2vw;
+}
+
+.btn-back:hover{
+	color: #25cd53;
+    text-decoration: underline;
+}

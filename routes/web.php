@@ -8,16 +8,12 @@ use App\Models\Product;
 
 
 Route::view('/', 'index')->name('home');
-Route::view('/recuperar','olvidoClv')->name('recuperar');
+Route::view('/recuperar','olvidoClv')->name('recuperar')->middleware('guest');
 Route::view('/info','infoProduc')->name('info');
-Route::view('/tarjeta','tarjeta')->name('tarjeta');
-Route::view('/carrito','carrito')->name('carrito');
-// Route::get('/catalogo', [ProductoController::class, 'index']);
-Route::view('/catalogo','catalogo');
-Route::view('/perfil','verPerfil')->name('verPerfil');
-Route::view('/datos','Datos')->name('misDatos');
-
-
+Route::view('/tarjeta','tarjeta')->name('tarjeta')->middleware('auth');
+Route::view('/carrito','carrito')->name('carrito')->middleware('auth');
+Route::view('/perfil','verPerfil')->name('verPerfil')->middleware('auth');
+Route::view('/datos','Datos')->name('misDatos')->middleware('auth');
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store'); 
 
 Route::get('/catalogo', function () {
@@ -26,8 +22,7 @@ Route::get('/catalogo', function () {
 
     // Retorna la vista del catálogo con los productos
     return view('catalogo', ['productos' => $productos]);
-});
+})->name('catalogo');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-
 
 Auth::routes();

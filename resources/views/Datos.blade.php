@@ -9,7 +9,7 @@
                         <div class="col-md-4 text-center">
                             <div class="profile-section">
                                 <img id="profile-img" class="profile-img"
-                                    src="{{ Vite::assets('resources/img/Agricultora.jpg') }}" alt="Foto de perfil" />
+                                    src="{{ Vite::asset('resources/img/Agricultora.jpg') }}" alt="Foto de perfil" />
                                 <div class="mt-3">
                                     <input type="file" id="upload-photo" class="form-controlDatos-file" accept="image/*">
                                 </div>
@@ -87,6 +87,6 @@
 @endsection
 
 @section('style')
-    @vite('resources/css/catalogo.css')
+    @vite('resources/css/datos.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 @endsection

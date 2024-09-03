@@ -231,3 +231,8 @@ input {
 	width: 40px;
 }
 
+.btn-back{
+	padding-left: 17vw;
+    position: absolute;
+    z-index: 5;
+}

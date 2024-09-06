@@ -17,14 +17,14 @@
 				<p>Tienes # productos en tu carrito</p>
 			</div>
 			<div class="producto">
-				<img src="https://http2.mlstatic.com/D_NQ_NP_911977-MLA44294048723_122020-O.webp" alt="producto" />
+				<img src="{{ Vite::asset('resources/img/1.jpg') }}" alt="producto" />
 				<div class="infoProduc">
-					<b>Iphone 11 pro</b>
-					<p>256GB, navy blue</p>
+					<b>Papa</b>
+					<p>Papa fresca</p>
 				</div>
 				<p class="cantidad">2</p>
 				<div class="precio">
-					<b>$900</b>
+					<b>$24.000</b>
 					<i class="fa-regular fa-trash-can"></i>
 				</div>
 			</div>

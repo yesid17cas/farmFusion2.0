@@ -9,7 +9,7 @@
         
         <!-- Primer Producto (posición 1 del array) -->
         @if(isset($productos[0]))
-            <a href="InfoProduc.html">
+            <a href="{{route('info')}}">
                 <div class="product" data-name="p-1">
                     <img src="{{ Vite::asset('resources/img/1.jpg') }}" alt="">
                     <h3>{{ $productos[0]->name }}</h3>

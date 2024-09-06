@@ -3,20 +3,20 @@
 @section('content')
 <main>
     <div class="informacion">
-        <img src="{{Vite::asset('resources/img/1.png')}}" alt="Producto" class="informacion__img" />
+        <img src="{{Vite::asset('resources/img/1.jpg')}}" alt="Producto" class="informacion__img" />
         <div class="informacion__datos">
             <b>
-                Fresas <br />
-                $5.000
+                Papa <br />
+                $24.000
             </b>
             <p>
                 Codigo del producto: 0002412 <br />
                 <b> Descripción </b><br />
-                Fresas 100% Colombianas
+                Papa recien cultivada
             </p>
             <div class="botonesInfo">
                 <button class="informacion__boton">
-                    <a href="carrito.html">Agregar a carrito</a>
+                    <a href="{{route('carrito')}}">Agregar a carrito</a>
                 </button>
                 <button class="informacion__boton"><a href="#">Comprar</a></button>
             </div>

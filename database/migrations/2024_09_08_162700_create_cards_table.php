@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateCardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade'); 
-            $table->decimal('total', 10, 2)->default(0); // Total del carrito
-            $table->timestamps(); // Para fechas de creación y actualización
+            $table->string('card_number', 20);
+            $table->string('full_name');
+            $table->string('expiry_date', 5); // Cambiado a longitud de 5 para DD/MM
+            $table->string('cvv'); 
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('cards');
     }
-};
+}

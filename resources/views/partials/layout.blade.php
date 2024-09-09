@@ -20,6 +20,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     @vite('resources/css/style.css')
     @yield('style');
+    @yield('scripts')
 
 </head>
 

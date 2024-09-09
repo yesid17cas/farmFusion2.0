@@ -251,10 +251,9 @@ input {
 }
 
 input:focus{ 
-	border-bottom: 2px solid white;
+	border-bottom: 2px solid ;
 	outline: none;
 	border: none;
-	color: white;
 	font-size: 16px;
 	height: 30px;
 	margin-bottom: -2px;

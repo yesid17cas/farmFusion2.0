@@ -4,13 +4,13 @@
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
+use App\Http\Controllers\CardController;
 
 
 
 Route::view('/', 'index')->name('home');
 Route::view('/recuperar','olvidoClv')->name('recuperar')->middleware('guest');
 Route::view('/info','infoProduc')->name('info');
-Route::view('/tarjeta','tarjeta')->name('tarjeta')->middleware('auth');
 Route::view('/carrito','carrito')->name('carrito')->middleware('auth');
 Route::view('/perfil','verPerfil')->name('verPerfil')->middleware('auth');
 Route::view('/datos','Datos')->name('misDatos')->middleware('auth');
@@ -25,5 +25,15 @@ Route::get('/catalogo', function () {
 })->name('catalogo');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::view('/factura','factura')->name('factura');
+
+// Ruta de tarjetas
+Route::get('/tarjeta', function () {
+    return view('tarjeta'); 
+})->name('tarjeta')->middleware('auth');
+
+Route::post('/tarjetas', [CardController::class, 'store'])->name('tarjetas.store');
+
+
+
 
 Auth::routes();

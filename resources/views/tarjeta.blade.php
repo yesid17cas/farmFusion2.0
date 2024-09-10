@@ -10,7 +10,8 @@
                 <div class="circle circle-2"></div>
             </div>
             <div class="tarjeta__card">
-                <form>
+                <form action="{{ route('tarjetas.store') }}" method="POST">
+                    @csrf
                     <div class="tarjeta__logo">
                         <xml version="1.0" encoding="UTF-8"?>
                         <svg width="48px" height="48px" viewBox="0 0 64 64" version="1.1">
@@ -26,32 +27,31 @@
                         </svg>
                     </div>
                     <div class="tarjeta__card-number">
-                        <label>Número de tarjeta</label>
-                        <input id="tarjeta__card-number" placeholder="1234 1234 1234 1234" type="text" required
-                            maxlength="19">
+                        <label for="card_number">Número de tarjeta</label>
+                        <input id="card_number" name="card_number" placeholder="1234 1234 1234 1234" type="text" required maxlength="19" oninput="formatCardNumber(this)">
                         <span class="tarjeta__underline"></span>
                     </div>
                     <br>
                     <div class="tarjeta__group">
                         <div class="tarjeta__card-name">
-                            <label>Nombre</label>
-                            <input id="tarjeta__card-name" placeholder="Juanita" type="text" required>
+                            <label for="full_name">Nombre</label>
+                            <input id="full_name" name="full_name" placeholder="Juanita" type="text" required>
                             <span class="tarjeta__underline"></span>
                         </div>
                         <div class="tarjeta__expiration-date">
-                            <label>Fecha exp</label>
-                            <input id="tarjeta__card-exp" placeholder="10/25" type="text" maxlength="5" required>
+                            <label for="expiry_date">Fecha Exp</label>
+                            <input id="expiry_date" name="expiry_date" type="text" maxlength="5" required oninput="formatExpiryDate(this)">
                             <span class="tarjeta__underline"></span>
                         </div>
                         <div class="tarjeta__ccv">
-                            <label>CVV</label>
-                            <input id="tarjeta__card-ccv" placeholder="123" type="text" maxlength="3" required>
+                            <label for="cvv">CVV</label>
+                            <input id="cvv" name="cvv" placeholder="123" type="text" maxlength="3" required>
                             <span class="tarjeta__underline"></span>
                         </div>
                     </div>
                     <!-- Botón de Guardar -->
                     <div class="tarjeta__save-button">
-                        <button type="submit">Guardar</button>
+                        <button type="submit" id="tarjeta_save" onclick="alert('tarjeta guardada correctamente')">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -59,9 +59,28 @@
     </div>
 </div>
 
-<!-- <script src="./js/script.js"></script> -->
+@section('scripts')
+<script>
+
+
+    function formatCardNumber(input) {
+        // Eliminar espacios y añadir espacios cada 4 dígitos
+        let value = input.value.replace(/\s+/g, '');
+        input.value = value.match(/.{1,4}/g)?.join(' ') || '';
+    }
+
+    function formatExpiryDate(input) {
+        // Formatear la fecha en MM/YY y permitir borrar
+        let value = input.value.replace(/\D/g, '');
+        if (value.length > 2) {
+            value = value.slice(0, 2) + '/' + value.slice(2);
+        }
+        input.value = value;
+    }
+</script>
 @endsection
 
+@endsection
 
 @section('style')
 @vite('resources/css/tarjeta.css')

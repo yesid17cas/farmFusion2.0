@@ -24,5 +24,6 @@ Route::get('/catalogo', function () {
     return view('catalogo', ['productos' => $productos]);
 })->name('catalogo');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::view('/factura','factura')->name('factura');
 
 Auth::routes();

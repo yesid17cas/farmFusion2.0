@@ -11,9 +11,9 @@
                             <span class="line line3"></span>
                         </div>
                         <div class="menu-items">
-                            <li><a href="{{route('misDatos')}}">Ver Perfil</a></li>
-                            <li><a href="{{route('catalogo')}}">Categorías</a></li>
-                            <li><a href="{{route('verPerfil')}}">Configuraciones</a></li>
+                            <li><a href="{{route('misDatos')}}" class="{{request()->routeIs('misDatos') ? 'active' : ''}}">Ver Perfil</a></li>
+                            <li><a href="{{route('catalogo')}}" class="{{request()->routeIs('catalogo') ? 'active' : ''}}">Categorías</a></li>
+                            <li><a href="{{route('verPerfil')}}" class="{{request()->routeIs('verPerfil') ? 'active' : ''}}">Configuraciones</a></li>
                             <!-- <li><a href="#">Portafolio</a></li>
                             <li><a href="#">Blog</a></li> -->
                         </div>

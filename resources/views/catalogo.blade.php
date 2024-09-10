@@ -58,7 +58,7 @@
 
     <!-- Botón de agregar producto -->
     <div class="button-container">
-        <a href="{{ route('products.create') }}" class="add-product-btn">Agregar Producto</a>
+        <a href="{{ route('products.create') }}" class="add-product-btn"><i class="fa-solid fa-circle-plus"></i></a>
     </div>
 
 </div>

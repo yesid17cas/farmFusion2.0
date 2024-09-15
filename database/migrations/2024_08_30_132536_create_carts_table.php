@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade'); 
-            $table->decimal('total', 10, 2)->default(0); // Total del carrito
+            $table->foreignId('user_id')->constrained(); 
+            $table->decimal('total');// Total del carrito
             $table->timestamps(); // Para fechas de creación y actualización
         });
     }

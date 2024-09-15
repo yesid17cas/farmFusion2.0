@@ -40,17 +40,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-
-                {{-- Campo direccion --}}
-                <input id="address" name="address" type="text" placeholder="Direccion"
-                    class="@error('address') is-invalid @enderror" value="{{ old('address') }}" required
-                    autocomplete="address" />
-                @error('address')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-
+                
                 {{-- Campo Email --}}
                 <input type="email" placeholder="Email" id="email-register" @error('email') is-invalid @enderror
                     name="email" value="{{ old('email') }}" required autocomplete="email" />

@@ -5,8 +5,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\CardController;
-
-
+use App\Http\Controllers\PaymentController;
 
 Route::view('/', 'index')->name('home');
 Route::view('/recuperar','olvidoClv')->name('recuperar')->middleware('guest');
@@ -32,6 +31,10 @@ Route::get('/tarjeta', function () {
 })->name('tarjeta')->middleware('auth');
 
 Route::post('/tarjetas', [CardController::class, 'store'])->name('tarjetas.store');
+
+Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::post('/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
+
 
 
 

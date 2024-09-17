@@ -14,8 +14,7 @@
                             <li><a href="{{route('misDatos')}}" class="{{request()->routeIs('misDatos') ? 'active' : ''}}">Ver Perfil</a></li>
                             <li><a href="{{route('catalogo')}}" class="{{request()->routeIs('catalogo') ? 'active' : ''}}">Categorías</a></li>
                             <li><a href="{{route('verPerfil')}}" class="{{request()->routeIs('verPerfil') ? 'active' : ''}}">Configuraciones</a></li>
-                            <!-- <li><a href="#">Portafolio</a></li>
-                            <li><a href="#">Blog</a></li> -->
+                            <li><a href="{{route('carrito')}}" class="{{request()->routeIs('carrito') ? 'active' : ''}}">Carrito</a></li>
                         </div>
                     </div>
                 </div>

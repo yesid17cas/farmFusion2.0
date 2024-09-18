@@ -16,14 +16,28 @@ Route::view('/perfil','verPerfil')->name('verPerfil')->middleware('auth');
 Route::view('/datos','Datos')->name('misDatos')->middleware('auth');
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store'); 
 
-Route::get('/catalogo', function () {
-    // Obtén todos los productos de la base de datos
-    $productos = Product::all();
 
-    // Retorna la vista del catálogo con los productos
-    return view('catalogo', ['productos' => $productos]);
-})->name('catalogo');
+// INICIO RUTA DE PRODUCTOS
+
+
+// Ruta para mostrar los productos del usuario autenticado
+Route::middleware('auth')->group(function () {
+    Route::get('/misProductos', [ProductController::class, 'index'])->name('misProductos'); // Muestra solo los productos del usuario logueado
+});
+
+// Ruta para crear productos
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+
+// Ruta para gestionar los productos (CRUD completo)
+Route::resource('products', ProductController::class)->except(['index']); // Elimina 'index' para evitar conflicto con la ruta '/misProductos'
+
+// Ruta para mostrar el catálogo de productos
+Route::get('/catalogo', [ProductController::class, 'catalogo'])->name('catalogo');
+
+
+// FIN RUTA DE PRODUCTOS
+
+
 
 // Ruta de tarjetas
 Route::get('/tarjeta', function () {
@@ -31,6 +45,7 @@ Route::get('/tarjeta', function () {
 })->name('tarjeta')->middleware('auth');
 
 Route::post('/tarjetas', [CardController::class, 'store'])->name('tarjetas.store');
+// fin ruta tarjetas
 
 
 

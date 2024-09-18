@@ -9,5 +9,5 @@ class Product extends Model
     protected $table = 'products';
 
     // Especifica los campos que se pueden llenar masivamente
-    protected $fillable = ['name', 'descrition', 'price', 'exits'];
+    protected $fillable = ['name', 'descrition', 'price', 'exits', 'user_id'];
 }

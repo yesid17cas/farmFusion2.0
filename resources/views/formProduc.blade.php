@@ -29,8 +29,9 @@
                     <label>Descripción</label>
                 </div>
             </div>
+            
             <div class="col-xs-12">
-                <button type="submit" class="btn-lrg submit-btn">Cargar producto</button>
+                <button type="submit" class="btn-lrg submit-btn" onclick="alert('Producto cargado correctamente')">Cargar producto</button>
             </div>
         </div>
     </div>

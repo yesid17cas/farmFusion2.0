@@ -2,17 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
 {
-    use HasFactory;
+    protected $fillable = ['token', 'digits', 'expiry_date', 'user_id'];
 
-    protected $fillable = [
-        'card_number',
-        'full_name',
-        'expiry_date',
-        'cvv',
-    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

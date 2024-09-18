@@ -12,8 +12,7 @@
                         </div>
                         <div class="menu-items">
                             <li><a href="{{route('misDatos')}}">Ver Perfil</a></li>
-                            <li><a href="{{route('misProductos')}}">Mis Productos</a></li>
-                            <li><a href="{{route('catalogo')}}">Catálogo</a></li> 
+                            <li><a href="{{route('catalogo')}}">Categorías</a></li>
                             <li><a href="{{route('verPerfil')}}">Configuraciones</a></li>
                             <!-- <li><a href="#">Portafolio</a></li>
                             <li><a href="#">Blog</a></li> -->

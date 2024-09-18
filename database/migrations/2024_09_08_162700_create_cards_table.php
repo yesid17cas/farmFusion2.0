@@ -15,10 +15,10 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->string('card_number', 20);
-            $table->string('full_name');
-            $table->string('expiry_date', 5); // Cambiado a longitud de 5 para DD/MM
-            $table->string('cvv'); 
+            $table->string('token');
+            $table->string('digits', 4);
+            $table->string('expiry_date', 7);
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

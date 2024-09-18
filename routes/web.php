@@ -5,8 +5,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\CardController;
-
-
+use App\Http\Controllers\PaymentController;
 
 Route::view('/', 'index')->name('home');
 Route::view('/recuperar','olvidoClv')->name('recuperar')->middleware('guest');
@@ -27,6 +26,7 @@ Route::middleware('auth')->group(function () {
 
 // Ruta para crear productos
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::view('/factura','factura')->name('factura');
 
 // Ruta para gestionar los productos (CRUD completo)
 Route::resource('products', ProductController::class)->except(['index']); // Elimina 'index' para evitar conflicto con la ruta '/misProductos'
@@ -46,6 +46,10 @@ Route::get('/tarjeta', function () {
 
 Route::post('/tarjetas', [CardController::class, 'store'])->name('tarjetas.store');
 // fin ruta tarjetas
+
+Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::post('/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
+
 
 
 

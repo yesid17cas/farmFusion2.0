@@ -9,7 +9,7 @@
         <!-- Mostrar todos los productos -->
         @foreach($productos as $producto)
             <div class="product" data-name="p-{{ $producto->id }}">
-                <img src="{{ Vite::asset('resources/img/' . $producto->image) }}" alt="">
+                <img src="{{ asset('images/' . $producto->image) }}" alt="{{ $producto->name }}">
                 <h3>{{ $producto->name }}</h3>
                 <div class="price">${{ number_format($producto->price, 0, ',', '.') }}</div>
 
@@ -20,7 +20,8 @@
                         data-name="{{ $producto->name }}" 
                         data-descrition="{{ $producto->descrition }}" 
                         data-price="{{ $producto->price }}" 
-                        data-exits="{{ $producto->exits }}">
+                        data-exits="{{ $producto->exits }}"
+                        data-image="{{ $producto->image }}">
                         Editar
                     </button>
                     
@@ -47,7 +48,7 @@
         <span class="close">&times;</span>
         <h2>Editar Producto</h2>
 
-        <form id="editForm" method="POST">
+        <form id="editForm" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -71,14 +72,18 @@
             <div class="form-group">
                 <label for="exits">Existencias:</label>
                 <input type="number" id="exits" name="exits" required>
+            </div> <br>
+
+            <div class="form-group">
+                <label for="image">Imagen:</label>
+                <input type="file" id="image" name="image">
+                <div id="currentImage"></div> <!-- Se usará para mostrar la imagen actual -->
             </div>
 
             <button type="submit" class="save-btn">Guardar Cambios</button>
         </form>
     </div>
 </div>
-
-
 
 @endsection
 
@@ -91,7 +96,7 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     // Código para el modal
     document.querySelectorAll('.edit-btn').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function() { 
             const modal = document.getElementById('editModal');
             modal.style.display = "block"; // Mostrar el modal
 
@@ -101,6 +106,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const descrition = this.getAttribute('data-descrition');
             const price = this.getAttribute('data-price');
             const exits = this.getAttribute('data-exits');
+            const image = this.getAttribute('data-image');
 
             // Llenar el formulario del modal con los datos del producto
             document.getElementById('productId').value = id;
@@ -108,6 +114,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('descrition').value = descrition;
             document.getElementById('price').value = price;
             document.getElementById('exits').value = exits;
+
+            // Mostrar la imagen actual en el modal
+            const currentImage = document.getElementById('currentImage');
+            if (image) {
+                currentImage.innerHTML = `<img src="/images/${image}" alt="${name}" style="max-width: 200px; max-height: 200px;">`;
+            } else {
+                currentImage.innerHTML = '';
+            }
 
             // Actualizar la acción del formulario con la URL correcta
             document.getElementById('editForm').action = `/products/${id}`;
@@ -118,6 +132,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.querySelector('.close').addEventListener('click', function() {
         document.getElementById('editModal').style.display = "none";
     });
+
     // Cerrar el modal cuando se haga clic fuera de él
     window.onclick = function(event) {
         const modal = document.getElementById('editModal');
@@ -126,7 +141,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 });
-
-
 </script>
 @endsection

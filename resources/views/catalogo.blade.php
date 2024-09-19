@@ -9,7 +9,7 @@
         @foreach($productos as $producto)
             <a href="{{ route('info', ['id' => $producto->id]) }}">
                 <div class="product" data-name="p-{{ $producto->id }}">
-                    <img src="{{ Vite::asset('resources/img/' . $producto->image) }}" alt="">
+                    <img src="{{ asset('images/' . $producto->image) }}" alt="{{ $producto->name }}">
                     <h3>{{ $producto->name }}</h3>
                     <div class="price">${{ number_format($producto->price, 0, ',', '.') }}</div>
                 </div>
@@ -17,10 +17,6 @@
         @endforeach
     </div>
 
-    <!-- Botón de agregar producto -->
-    <div class="button-container">
-        <a href="{{ route('products.create') }}" class="add-product-btn"><i class="fa-solid fa-circle-plus"></i></a>
-    </div>
 </div>
 @endsection
 

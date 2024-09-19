@@ -1,7 +1,7 @@
 @extends('partials.layout') <!-- Asegúrate de que esta vista base está configurada correctamente -->
 
 @section('content')
-<form action="{{ route('products.store') }}" method="POST">
+<form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="containerForm">
         <div class="row input-container">
@@ -27,6 +27,12 @@
                 <div class="styled-input wide">
                     <textarea name="descrition" required></textarea>
                     <label>Descripción</label>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="styled-input wide">
+                    <input type="file" name="image" required /> <!-- Nuevo campo para imagen -->
                 </div>
             </div>
             

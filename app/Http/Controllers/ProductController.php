@@ -34,34 +34,44 @@ class ProductController extends Controller
     }
 
     // Método para almacenar un producto
+
+    
     public function store(Request $request)
     {
-        // Validar los datos del formulario
+        // Validar los datos del formulario, incluida la imagen
         $request->validate([
             'name' => 'required|string|max:255',
             'descrition' => 'required|string|max:255',
             'price' => 'required|integer',
             'exits' => 'required|integer|min:0',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación de la imagen
         ]);
-
+    
         // Limpiar el campo price
         $price = str_replace(['$', ','], '', $request->input('price'));
-
+    
+        // Subir la imagen
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension(); 
+            $request->image->move(public_path('images'), $imageName); // Guardar la imagen en la carpeta 'img'
+        }
+    
         // Obtener el ID del usuario autenticado
         $userId = auth()->id();
-
-
+    
         // Crear el producto en la base de datos
         Product::create([
             'name' => $request->input('name'),
             'descrition' => $request->input('descrition'),
             'price' => (int) $price,
             'exits' => $request->input('exits'),
-            'user_id' => $userId, // Asignar el ID del usuario autenticado
+            'image' => $imageName, // Guardar el nombre de la imagen
+            'user_id' => $userId,
         ]);
-
+    
         return redirect()->back()->with('success', 'Producto guardado exitosamente.');
     }
+    
 
     // Método para editar un producto (formulario)
     public function edit($id)
@@ -82,19 +92,41 @@ class ProductController extends Controller
             'descrition' => 'required|string|max:255',
             'price' => 'required|integer',
             'exits' => 'required|integer|min:0',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación de imagen
         ]);
+        
+        // Buscar el producto por su ID
+        $producto = Product::findOrFail($id);
     
         // Limpiar el campo price
         $price = str_replace(['$', ','], '', $request->input('price'));
     
-        // Buscar el producto por su ID y actualizarlo
-        $producto = Product::findOrFail($id);
-        $producto->update([
-            'name' => $request->input('name'),
-            'descrition' => $request->input('descrition'),
-            'price' => (int) $price,
-            'exits' => $request->input('exits'),
-        ]);
+        // Actualizar el producto
+        $producto->name = $request->input('name');
+        $producto->descrition = $request->input('descrition');
+        $producto->price = (int) $price;
+        $producto->exits = $request->input('exits');
+    
+        // Manejar la imagen
+        if ($request->hasFile('image')) {
+            // Eliminar la imagen antigua si existe
+            if ($producto->image) {
+                $oldImagePath = public_path('images/' . $producto->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+    
+            // Subir la nueva imagen
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+    
+            // Actualizar el nombre de la imagen en el modelo
+            $producto->image = $imageName;
+        }
+    
+        // Guardar los cambios
+        $producto->save();
     
         // Redirigir a la vista de misProductos
         return redirect()->route('misProductos')->with('success', 'Producto actualizado exitosamente.');

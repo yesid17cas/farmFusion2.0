@@ -99,9 +99,7 @@
 
 /* Estilo para el botón de agregar producto */
 .button-container{
-    position: fixed;
-    top: 28vh;
-    right: 8vw;
+    margin-top: 2rem;
 }
 .add-product-btn {
     background-color: #25cd53;
@@ -512,3 +510,5 @@ input[type=checkbox] + label {
     cursor: pointer;
     opacity: 0.8;
 }
+
+

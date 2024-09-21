@@ -143,4 +143,19 @@ class ProductController extends Controller
     //     // Redirigir a la página de listado de productos con un mensaje de éxito
     //     return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
     // }
+
+
+
+
+
+    // mostrar la info de los productos en el carrito
+    public function show($id)
+    {
+        // Busca el producto por su ID
+        $producto = Product::findOrFail($id);
+
+        // Retorna la vista con los datos del producto
+        return view('infoProduc', compact('producto'));
+    }
+
 }

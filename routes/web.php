@@ -34,6 +34,10 @@ Route::resource('products', ProductController::class)->except(['index']); // Eli
 // Ruta para mostrar el catálogo de productos
 Route::get('/catalogo', [ProductController::class, 'catalogo'])->name('catalogo');
 
+// Ruta info producto
+Route::get('/producto/{id}', [ProductController::class, 'show'])->name('info');
+
+
 
 // FIN RUTA DE PRODUCTOS
 

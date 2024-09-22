@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PaymentController;
 
 Route::view('/', 'index')->name('home');
@@ -44,15 +45,27 @@ Route::get('/producto/{id}', [ProductController::class, 'show'])->name('info');
 
 
 // Ruta de tarjetas
+
 Route::get('/tarjeta', function () {
     return view('tarjeta'); 
 })->name('tarjeta')->middleware('auth');
 
 Route::post('/tarjetas', [CardController::class, 'store'])->name('tarjetas.store');
+
 // fin ruta tarjetas
 
 Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
 Route::post('/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
+
+
+// ruta de carrito
+
+Route::post('/carrito/agregar/{id}', [CarritoController::class, 'agregarAlCarrito'])->name('carrito.agregar');
+Route::get('/carrito', [CarritoController::class, 'verCarrito'])->name('carrito.ver');
+Route::post('/carrito/eliminar/{id}', [CarritoController::class, 'eliminarDelCarrito'])->name('carrito.eliminar');
+
+// fin ruta de carrito
+
 
 
 

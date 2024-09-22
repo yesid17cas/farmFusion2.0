@@ -18,9 +18,10 @@
                 {{ $producto->descrition }}
             </p>
             <div class="botonesInfo">
-                <button class="informacion__boton">
-                    <a href="{{ route('carrito') }}">Agregar a carrito</a>
-                </button>
+                <form action="{{ route('carrito.agregar', ['id' => $producto->id]) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="informacion__boton-agregar">Agregar a carrito</button>
+                </form>
                 <button class="informacion__boton"><a href="#">Comprar</a></button>
             </div>
         </div>

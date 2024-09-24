@@ -56,6 +56,9 @@ Route::post('/tarjetas', [CardController::class, 'store'])->name('tarjetas.store
 
 Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
 Route::post('/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
+Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.process');
+Route::get('/payment/form', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::get('/payment/intent', [PaymentController::class, 'createPaymentIntent']);
 
 
 // ruta de carrito

@@ -27,6 +27,17 @@
 	font-size: 1.3vw;
 	margin-top: 3.5vw;
 }
+
+.informacion__boton-agregar {
+	width: 62%;
+	height: 3.6vw;
+	border-radius: 20px;
+	background: #fff;
+	border-color: transparent;
+	box-shadow: 0px 3px 0px 5px #25cd53;
+	font-size: 1.3vw;
+	margin-top: 3.5vw;
+}
 .informacion__datos button:first-of-type {
 	margin-right: 2vw;
 }
@@ -35,10 +46,15 @@
 }
 .informacion__boton:hover {
 	background: #25cd53;
+	color: #fff;
+	transform: translate(5px, 5px);
+}
+.informacion__boton-agregar:hover{
+	background: #25cd53;
 	transform: translate(5px, 5px);
 }
 .informacion__boton a:hover {
-	color: #fff;
+	text-decoration: none;
 }
 .botonesInfo{
 	display: flex;

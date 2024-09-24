@@ -3,21 +3,25 @@
 @section('content')
 <main>
     <div class="informacion">
-        <img src="{{Vite::asset('resources/img/1.jpg')}}" alt="Producto" class="informacion__img" />
+        <!-- Usamos la imagen dinámica del producto -->
+        <img src="{{ asset('images/' . $producto->image) }}" alt="{{ $producto->name }}" class="informacion__img" />
         <div class="informacion__datos">
             <b>
-                Papa <br />
-                $24.000
+                <!-- Nombre y precio del producto dinámico -->
+                {{ $producto->name }} <br />
+                ${{ number_format($producto->price, 0, ',', '.') }}
             </b>
             <p>
-                Codigo del producto: 0002412 <br />
+                <!--descripción del producto -->
+                
                 <b> Descripción </b><br />
-                Papa recien cultivada
+                {{ $producto->descrition }}
             </p>
             <div class="botonesInfo">
-                <button class="informacion__boton">
-                    <a href="{{route('carrito')}}">Agregar a carrito</a>
-                </button>
+                <form action="{{ route('carrito.agregar', ['id' => $producto->id]) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="informacion__boton-agregar">Agregar a carrito</button>
+                </form>
                 <button class="informacion__boton"><a href="#">Comprar</a></button>
             </div>
         </div>

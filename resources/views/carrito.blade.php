@@ -1,35 +1,47 @@
 @extends('partials.layout')
 
 @section('content')
-    <main class="cart">
-        <div class="products">
-            <div class="volver">
-                <a href="catalogo.html">
-                    <i class="fa-solid fa-arrow-left"></i> Continuar comprando
-                </a>
+<main class="cart">
+    <div class="products">
+        <div class="volver">
+            <a href="{{ route('catalogo') }}">
+                <i class="fa-solid fa-arrow-left"></i> Continuar comprando
+            </a>
+        </div>
+        <div class="items">
+            <b>Carrito de compras</b> <br> <br>
+            <p>Tienes {{ count($carrito) }} productos en tu carrito</p>
+        </div>
+
+        @foreach($carrito as $id => $producto)
+        <div class="producto">
+            <img src="{{ asset('images/' . $producto['imagen']) }}" alt="{{ $producto['nombre'] }}" /> <!-- Cambia 'image' a 'imagen' -->
+            <div class="infoProduc">
+                <b>{{ $producto['nombre'] }}</b> <!-- Cambia 'name' a 'nombre' -->
+                {{-- <p>{{ $producto['nombre'] }}</p> --}}
             </div>
-            <div class="items">
-                <b>Carrito de compras</b>
-                <p>Tienes # productos en tu carrito</p>
-            </div>
-            <div class="producto">
-                <img src="{{ Vite::asset('resources/img/1.jpg') }}" alt="producto" />
-                <div class="infoProduc">
-                    <b>Papa</b>
-                    <p>Papa fresca</p>
-                </div>
-                <p class="cantidad">2</p>
-                <div class="precio">
-                    <b>$24.000</b>
-                    <i class="fa-regular fa-trash-can"></i>
-                </div>
+            <p class="cantidad">{{ $producto['cantidad'] }}</p>
+            <div class="precio">
+                <b>${{ number_format($producto['precio'] * $producto['cantidad'], 0, ',', '.') }}</b> <!-- Cambia 'price' a 'precio' -->
+                <form method="POST" action="{{ route('carrito.eliminar', $id) }}">
+                    @csrf
+                    <button type="submit">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                </form>
+                
             </div>
         </div>
-        <div class="pago">
-            <b>Forma de pago</b>
+        @endforeach
+        
 
-            <form id="payment-form" method="POST" action="{{ route('payment.process') }}">
-                @csrf
+    </div>
+
+    <div class="pago">
+        <b>Forma de pago</b>
+
+        <form id="payment-form" method="POST" action="{{ route('payment.process') }}">
+            @csrf
 
                 <!-- Seleccionar tarjeta guardada -->
                 <div class="form-group">
@@ -49,7 +61,7 @@
                     </select>
                 </div>
 
-                <p>- O -</p>
+            <p>- O -</p>
 
                 <!-- Stripe Elements para nueva tarjeta -->
                 
@@ -60,32 +72,32 @@
                       <!-- Display error message to your customers here -->
                     </div>
 
-                <div class="infoPrecio">
-                    <div>
-                        <p>Subtotal</p>
-                        <p>Envío</p>
-                        <p>Total</p>
-                    </div>
-                    <div>
-                        <p>$30000</p>
-                        <p>$20</p>
-                        <p>$3020</p>
-                    </div>
+            <div class="infoPrecio">
+                <div>
+                    <p>Subtotal</p>
+                    <p>Envío</p>
+                    <p>Total</p>
                 </div>
-                <button class="botonPago" type="submit" id="submit">
-                    <p>3020</p>
-                    <p>Comprar <i class="fa-solid fa-arrow-right"></i></p>
-                </button>
-            </form>
-        </div>
-    </main>
+                <div>
+                    <p>${{ number_format($subtotal, 0, ',', '.') }}</p> <!-- Muestra el subtotal -->
+                    <p>${{ number_format($envio, 0, ',', '.') }}</p> <!-- Muestra el costo de envío -->
+                    <p>${{ number_format($total, 0, ',', '.') }}</p> <!-- Muestra el total -->
+                </div>
+            </div>
+            <button class="botonPago" type="submit" id="submit">
+                <p>{{ number_format($total, 0, ',', '.') }}</p>
+                <p>Comprar <i class="fa-solid fa-arrow-right"></i></p>
+            </button>
+        </form>
+    </div>
+</main>
 @endsection
 
 @section('style')
-    @vite('resources/css/carrito.css')
+@vite('resources/css/carrito.css')
 @endsection
 
 @section('javaScript')
-    @vite('resources/js/payment.js')
-    <script src="https://js.stripe.com/v3/"></script>
+@vite('resources/js/payment.js')
+<script src="https://js.stripe.com/v3/"></script>
 @endsection

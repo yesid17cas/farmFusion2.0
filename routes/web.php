@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PaymentController;
+use Illuminate\Support\Facades\Auth;
 
 Route::view('/', 'index')->name('home');
 Route::view('/info','infoProduc')->name('info');
@@ -64,3 +65,4 @@ Route::get('/carrito', [CarritoController::class, 'verCarrito'])->name('carrito.
 Route::post('/carrito/eliminar/{id}', [CarritoController::class, 'eliminarDelCarrito'])->name('carrito.eliminar');
 
 // fin ruta de carrito
+Auth::routes();

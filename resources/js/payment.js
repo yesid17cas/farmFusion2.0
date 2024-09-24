@@ -1,55 +1,61 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const stripe = Stripe('pk_test_51PwuvPBd00zAvLLvcs61LQ3pR70iOEBTnzUInxPVthKarPlVOtTmqLQfv25DYunihyYWSbbQtmMOxPMIUYUY5O2e00sYniYICy');
-    const elements = stripe.elements();
+document.addEventListener("DOMContentLoaded", function() {
+    let stripe = Stripe("pk_test_51PwuvPBd00zAvLLvcs61LQ3pR70iOEBTnzUInxPVthKarPlVOtTmqLQfv25DYunihyYWSbbQtmMOxPMIUYUY5O2e00sYniYICy");
+    let elements = stripe.elements();
+    const form = document.getElementById('payment-form');
 
-    // Crear el campo de la tarjeta
-    const cardElement = elements.create('card');
+    let style = {
+        base: {
+            iconColor: '#666EE8',
+            color: '#31325F',
+            fontWeight: 400,
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#CFD7DF',
+            },
+        },
+        invalid: {
+            iconColor: '#fa755a',
+            color: '#fa755a',
+        },
+    };
+
+    let cardElement = elements.create('card', { style: style });
     cardElement.mount('#card-element');
 
-    // Mostrar errores de la tarjeta
-    cardElement.on('change', function(event) {
-        const errorElement = document.getElementById('card-errors');
-        if (event.error) {
-            errorElement.textContent = event.error.message;
-        } else {
-            errorElement.textContent = '';
-        }
-    });
-
-    // Manejar la presentación del formulario
-    const form = document.getElementById('payment-form');
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        // Comprobar si se seleccionó una tarjeta guardada
-        const savedCard = document.getElementById('saved-cards').value;
-        if (savedCard) {
-            // Enviar el formulario con la tarjeta guardada
-            stripeTokenHandler(savedCard);
-        } else {
-            // Crear un token para una nueva tarjeta
-            stripe.createToken(cardElement).then(function(result) {
+        const savedCard = document.querySelector('select[name="saved_card"]').value;
+        const paymentMethod = savedCard ? { id: savedCard } : { card: cardElement };
+
+        try {
+            fetch('/payment/intent')
+            .then((response) => response.json())
+            .then((data) => {
+              const clientSecret = data.clientSecret;
+          
+              stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                  card: cardElement,
+                  billing_details: {
+                    name: 'Nombre del Cliente',
+                  },
+                },
+              }).then((result) => {
                 if (result.error) {
-                    // Mostrar errores
-                    const errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
+                    document.querySelector('#error-message').textContent = result.error.message;
                 } else {
-                    // Enviar el token al servidor
-                    stripeTokenHandler(result.token.id);
+                  if (result.paymentIntent.status === 'succeeded') {
+                    window.location.href = '/factura'
+                  }
                 }
+              });
             });
+          
+        } catch (error) {
+            console.error('Error:', error);
+            document.querySelector('#error-message').textContent = 'Error al procesar el pago. Intenta nuevamente.';
         }
     });
-
-    function stripeTokenHandler(token) {
-        // Insertar el token en un campo oculto
-        const hiddenInput = document.createElement('input');
-        hiddenInput.setAttribute('type', 'hidden');
-        hiddenInput.setAttribute('name', 'stripeToken');
-        hiddenInput.setAttribute('value', token);
-        form.appendChild(hiddenInput);
-
-        // Enviar el formulario
-        form.submit();
-    }
 });

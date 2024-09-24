@@ -9,7 +9,6 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PaymentController;
 
 Route::view('/', 'index')->name('home');
-Route::view('/recuperar','olvidoClv')->name('recuperar')->middleware('guest');
 Route::view('/info','infoProduc')->name('info');
 Route::view('/carrito','carrito')->name('carrito')->middleware('auth');
 Route::view('/perfil','verPerfil')->name('verPerfil')->middleware('auth');
@@ -65,10 +64,3 @@ Route::get('/carrito', [CarritoController::class, 'verCarrito'])->name('carrito.
 Route::post('/carrito/eliminar/{id}', [CarritoController::class, 'eliminarDelCarrito'])->name('carrito.eliminar');
 
 // fin ruta de carrito
-
-
-
-
-
-
-Auth::routes();

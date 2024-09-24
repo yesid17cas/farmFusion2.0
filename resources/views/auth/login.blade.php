@@ -84,7 +84,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <a href="{{ route('recuperar') }}">Olvidaste tu contraseña?</a>
+                <a href="{{ route('password.request') }}">Olvidaste tu contraseña?</a>
                 <button type="submit">Iniciar sesión</button>
             </form>
         </div>

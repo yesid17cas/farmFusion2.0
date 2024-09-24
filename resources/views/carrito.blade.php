@@ -43,30 +43,34 @@
         <form id="payment-form" method="POST" action="{{ route('payment.process') }}">
             @csrf
 
-            <!-- Seleccionar tarjeta guardada -->
-            <div class="form-group">
-                <label for="saved-cards">Usar una tarjeta guardada:</label>
-                @php
-                    $cards = $cards ?? collect(); // Asegura que $cards sea una colección vacía si no se define
-                @endphp
-                <select name="saved_card" id="saved-cards" class="form-control">
-                    <option value="">Selecciona una tarjeta</option>
-                    @foreach ($cards as $card)
-                        <option value="{{ $card->stripe_token }}">
-                            {{ $card->brand }} **** {{ $card->last_four }} (Exp:
-                            {{ $card->expiry_date->format('m/Y') }})
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+                <!-- Seleccionar tarjeta guardada -->
+                <div class="form-group">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <label for="saved-cards">Usar una tarjeta guardada:</label>
+                    @php
+                        $cards = $cards ?? collect(); // Asegura que $cards sea una colección vacía si no se define
+                    @endphp
+                    <select name="saved_card" id="saved-cards" class="form-control">
+                        <option value="">Selecciona una tarjeta</option>
+                        @foreach ($cards as $card)
+                            <option value="{{ $card->stripe_token }}">
+                                {{ $card->brand }} **** {{ $card->last_four }} (Exp:
+                                {{ $card->expiry_date->format('m/Y') }})
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
 
             <p>- O -</p>
 
-            <!-- Stripe Elements para nueva tarjeta -->
-            <div id="card-element">
-                <!-- Stripe Elements se renderiza aquí -->
-            </div>
-            <div id="card-errors" role="alert"></div>
+                <!-- Stripe Elements para nueva tarjeta -->
+                
+                    <div id="card-element">
+                      <!-- Elements will create form elements here -->
+                    </div>
+                    <div id="error-message">
+                      <!-- Display error message to your customers here -->
+                    </div>
 
             <div class="infoPrecio">
                 <div>
@@ -81,7 +85,7 @@
                 </div>
             </div>
             <button class="botonPago" type="submit">
-                <p>${{ number_format($total, 0, ',', '.') }}</p>
+                <p>3020</p>
                 <p>Comprar <i class="fa-solid fa-arrow-right"></i></p>
             </button>
         </form>

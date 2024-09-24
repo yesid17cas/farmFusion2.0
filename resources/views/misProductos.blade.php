@@ -77,7 +77,6 @@
             <div class="form-group">
                 <label for="image">Imagen:</label>
                 <input type="file" id="image" name="image">
-                <div id="currentImage"></div> <!-- Se usará para mostrar la imagen actual -->
             </div>
 
             <button type="submit" class="save-btn">Guardar Cambios</button>
@@ -114,14 +113,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('descrition').value = descrition;
             document.getElementById('price').value = price;
             document.getElementById('exits').value = exits;
-
-            // Mostrar la imagen actual en el modal
-            const currentImage = document.getElementById('currentImage');
-            if (image) {
-                currentImage.innerHTML = `<img src="/images/${image}" alt="${name}" style="max-width: 200px; max-height: 200px;">`;
-            } else {
-                currentImage.innerHTML = '';
-            }
 
             // Actualizar la acción del formulario con la URL correcta
             document.getElementById('editForm').action = `/products/${id}`;

@@ -69,7 +69,7 @@ class ProductController extends Controller
             'user_id' => $userId,
         ]);
     
-        return redirect()->back()->with('success', 'Producto guardado exitosamente.');
+        return redirect()->route('misProductos')->with('success', 'Producto guardado exitosamente.');
     }
     
 

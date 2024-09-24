@@ -81,7 +81,7 @@
                 </div>
             </div>
             <button class="botonPago" type="submit">
-                <p>3020</p>
+                <p>${{ number_format($total, 0, ',', '.') }}</p>
                 <p>Comprar <i class="fa-solid fa-arrow-right"></i></p>
             </button>
         </form>

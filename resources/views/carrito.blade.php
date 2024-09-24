@@ -33,6 +33,7 @@
 
                 <!-- Seleccionar tarjeta guardada -->
                 <div class="form-group">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <label for="saved-cards">Usar una tarjeta guardada:</label>
                     @php
                         $cards = $cards ?? collect(); // Asegura que $cards sea una colección vacía si no se define
@@ -51,10 +52,13 @@
                 <p>- O -</p>
 
                 <!-- Stripe Elements para nueva tarjeta -->
-                <div id="card-element">
-                    <!-- Stripe Elements se renderiza aquí -->
-                </div>
-                <div id="card-errors" role="alert"></div>
+                
+                    <div id="card-element">
+                      <!-- Elements will create form elements here -->
+                    </div>
+                    <div id="error-message">
+                      <!-- Display error message to your customers here -->
+                    </div>
 
                 <div class="infoPrecio">
                     <div>
@@ -68,7 +72,7 @@
                         <p>$3020</p>
                     </div>
                 </div>
-                <button class="botonPago" type="submit">
+                <button class="botonPago" type="submit" id="submit">
                     <p>3020</p>
                     <p>Comprar <i class="fa-solid fa-arrow-right"></i></p>
                 </button>

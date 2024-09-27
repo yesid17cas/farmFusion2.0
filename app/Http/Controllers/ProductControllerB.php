@@ -13,7 +13,7 @@ class ProductoControllerB extends Controller
         $query = $request->input('query');
 
         // Buscar productos en la base de datos que coincidan con el nombre (usando LIKE)
-        $productos = DB::table('productos') // Asumiendo que tu tabla se llama 'productos'
+        $productos = DB::table('products') // Asumiendo que tu tabla se llama 'productos'
             ->where('nombre', 'like', '%' . $query . '%')
             ->get();
 

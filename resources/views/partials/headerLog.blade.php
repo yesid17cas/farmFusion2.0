@@ -14,8 +14,6 @@
                             <li><a href="{{route('verPerfil')}}">Ver Perfil</a></li>
                             <li><a href="{{route('catalogo')}}">Categorías</a></li>
                             <li><a href="#">Configuraciones</a></li>
-                            <!-- <li><a href="#">Portafolio</a></li>
-                            <li><a href="#">Blog</a></li> -->
                         </div>
                     </div>
                 </div>
@@ -36,15 +34,57 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button class="nav-item nav-link" type="submit">Cerrar sesión</button>
-                    </form>                    
+                    </form>                   
                 </div>
             </div>
+
+            <!-- Formulario de búsqueda -->
             <div class="buscar">
-                <input type="text" placeholder="Buscar" required />
-                <div class="btnBuscar">
-                    <i class="fas fa-search icon"></i>
-                </div>
+                <form id="form-busqueda" action="{{ url('/buscar') }}" method="GET">
+                    <input type="text" id="buscar" name="query" placeholder="Buscar producto..." required />
+                    <div class="btnBuscar">
+                        <button type="submit"><i class="fas fa-search icon"></i></button>
+                    </div>
+                </form>
             </div>
+
+            <!-- Resultados de la búsqueda -->
+            <div id="resultado"></div>
         </nav>
     </div>
 </header>
+
+<script>
+    document.getElementById('form-busqueda').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+        
+        const query = document.getElementById('buscar').value;
+
+        if (!query) {
+            alert("Por favor ingresa un término de búsqueda.");
+            return;
+        }
+
+        // Hacer una solicitud AJAX a la ruta de Laravel para buscar el producto
+        fetch(`/buscar?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                const resultadoDiv = document.getElementById('resultado');
+                resultadoDiv.innerHTML = '';
+
+                if (data.error) {
+                    resultadoDiv.innerHTML = `<p>${data.error}</p>`;
+                } else {
+                    data.forEach(producto => {
+                        const div = document.createElement('div');
+                        div.className = 'producto';
+                        div.innerHTML = `<h3>${producto.nombre}</h3><p>${producto.descripcion}</p><p>Precio: $${producto.precio}</p>`;
+                        resultadoDiv.appendChild(div);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>

@@ -4,6 +4,7 @@
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
+use App\Http\Controllers\ProductoControllerB;
 
 
 
@@ -14,7 +15,8 @@ Route::view('/tarjeta','tarjeta')->name('tarjeta')->middleware('auth');
 Route::view('/carrito','carrito')->name('carrito')->middleware('auth');
 Route::view('/perfil','verPerfil')->name('verPerfil')->middleware('auth');
 Route::view('/datos','Datos')->name('misDatos')->middleware('auth');
-Route::post('/products/store', [ProductController::class, 'store'])->name('products.store'); 
+Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+Route::get('/buscar', [ProductoControllerB::class, 'buscar']); 
 
 Route::get('/catalogo', function () {
     // Obtén todos los productos de la base de datos

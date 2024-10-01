@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('exits');
             $table->string('image');
-            $table->foreignId('user_id')->constrained();
+            $table->string('user_DocId', 10);
+            $table->foreign('user_DocId')->references('DocId')->on('users');
             $table->timestamps();
         });
     }

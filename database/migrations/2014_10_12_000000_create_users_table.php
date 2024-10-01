@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('DocId', 10)->primary();
             $table->string('name');
             $table->string('lastname');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();

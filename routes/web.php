@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 Route::view('/', 'index')->name('home');
 Route::view('/info','infoProduc')->name('info');
-Route::view('/carrito','carrito')->name('carrito')->middleware('auth');
 Route::view('/perfil','verPerfil')->name('verPerfil')->middleware('auth');
 Route::view('/datos','Datos')->name('misDatos')->middleware('auth');
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store'); 
@@ -46,11 +45,9 @@ Route::get('/producto/{id}', [ProductController::class, 'show'])->name('info');
 
 // Ruta de tarjetas
 
-Route::get('/tarjeta', function () {
-    return view('tarjeta'); 
-})->name('tarjeta')->middleware('auth');
+Route::view('/tarjeta', 'tarjeta')->name('tarjeta')->middleware('auth');
 
-Route::post('/tarjetas', [CardController::class, 'store'])->name('tarjetas.store');
+Route::post('/tarjeta/store', [CardController::class, 'savePaymentMethod'])->name('tarjetas.store');
 
 // fin ruta tarjetas
 

@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Mail;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $table = 'users';
+    protected $primaryKey = 'DocId';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     /**
      * The attributes that are mass assignable.
@@ -19,11 +23,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'DocId',
         'name',
         'lastname',
+        'image',
         'address',
         'email',
         'password',
+        'stripe_customer_id'
     ];
 
     /**
@@ -49,8 +56,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Card::class); // Relación con el modelo 'Card'
     }
-
-    use Notifiable;
 
     public function sendPasswordResetNotification($token)
     {

@@ -18,7 +18,8 @@ class CreateCardsTable extends Migration
             $table->string('token');
             $table->string('digits', 4);
             $table->string('expiry_date', 7);
-            $table->foreignId('user_id')->constrained();
+            $table->string('user_DocId', 10);
+            $table->foreign('user_DocId')->references('DocId')->on('users');
             $table->timestamps();
         });
     }

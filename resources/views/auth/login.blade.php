@@ -21,6 +21,16 @@
                 @csrf
                 <h1>Registrarse</h1>
                 <span>Utiliza tu correo electrónico para registrarte</span>
+                {{-- Campo DocId --}}
+                <input id="DocId" name="DocId" type="number" placeholder="Numero Documento"
+                    class="@error('DocId') is-invalid @enderror" value="{{ old('DocId') }}" required
+                    autocomplete="DocId" />
+                @error('DocId')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+
                 {{-- Campo nombre --}}
                 <input id="name" name="name" type="text" placeholder="Nombre"
                     class="@error('name') is-invalid @enderror" value="{{ old('name') }}" required

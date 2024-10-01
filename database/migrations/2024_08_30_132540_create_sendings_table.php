@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('sendings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('statu_id')->constrained();
-            $table->foreignId('company_id')->constrained();
+            $table->string('company_NIT', 10);
+            $table->foreign('company_NIT')->references('NIT')->on('companies');
             $table->foreignId('output_id')->constrained();
             $table->timestamps();
         });

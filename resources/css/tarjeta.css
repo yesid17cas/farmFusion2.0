@@ -132,6 +132,25 @@ input::placeholder{
 	outline: none;
 }
 
+#card-number{
+	width: 460px;
+}
+
+#form {
+    position: relative; /* Asegura que el formulario no se desplace */
+    margin-left: 0; /* Establece un valor base */
+}
+
+.stripeElement {
+    max-width: 400px;
+    box-sizing: border-box; /* Esto asegura que padding no afecte el ancho total */
+}
+
+.stripeElement:focus {
+    outline: none; /* Evita que el campo cambie de tamaño en foco */
+    border: 1px solid #007bff; /* Cambia el color del borde si lo deseas */
+    box-shadow: none; /* Evita sombras que podrían cambiar el tamaño del elemento */
+}
 /* linea del hover de los inputs */
 
 
@@ -146,12 +165,12 @@ input::placeholder{
 	background-color: #000;
 }
 
-.tarjeta__card-number > input[id="tarjeta__card-number"]:hover + .tarjeta__underline
+.StripeElement--empty:hover + .tarjeta__underline
 {
 	left: 0; 
 }
 
-.tarjeta__card-number > input[id="tarjeta__card-number"]:focus + .tarjeta__underline
+.stripeElement--focus + .tarjeta__underline
 {
 	left: 0; 
 }
@@ -159,26 +178,26 @@ input::placeholder{
 
 
 
-.tarjeta__card-name > input[id="tarjeta__card-name"]:hover + .tarjeta__underline{
+.tarjeta__card-name > input[id="full_name"]:hover + .tarjeta__underline{
 	left: 0; 
 }
-.tarjeta__card-name > input[id="tarjeta__card-name"]:focus + .tarjeta__underline{
+.tarjeta__card-name > input[id="full_name"]:focus + .tarjeta__underline{
 	left: 0; 
 }
 
-.tarjeta__expiration-date > input[id="tarjeta__card-exp"]:hover + .tarjeta__underline{
+.tarjeta__expiration-date > input[id="expiry_date"]:hover + .tarjeta__underline{
 	left: 0;
 }
 
-.tarjeta__expiration-date > input[id="tarjeta__card-exp"]:focus + .tarjeta__underline{
+.tarjeta__expiration-date > input[id="expiry_date"]:focus + .tarjeta__underline{
 	left: 0;
 }
 
-.tarjeta__ccv > input[id="tarjeta__card-ccv"]:hover + .tarjeta__underline{
+.tarjeta__ccv > input[id="cvv"]:hover + .tarjeta__underline{
 	left: 0;
 }
 
-.tarjeta__ccv > input[id="tarjeta__card-ccv"]:focus + .tarjeta__underline{
+.tarjeta__ccv > input[id="cvv"]:focus + .tarjeta__underline{
 	left: 0;
 }
 
@@ -364,4 +383,8 @@ label {
 	display: block;
 	padding-bottom: 2px;
 
+}
+
+.btnBuscar i{
+	margin-top: 3vh;
 }

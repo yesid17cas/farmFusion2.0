@@ -15,8 +15,7 @@
                             <li><a href="{{route('misProductos')}}">Mis Productos</a></li>
                             <li><a href="{{route('catalogo')}}">Catálogo</a></li>
                             <li><a href="{{route('verPerfil')}}">Configuraciones</a></li>
-                            <!-- <li><a href="#">Portafolio</a></li>
-                            <li><a href="#">Blog</a></li> -->
+                            <li><a href="{{route('carrito.ver')}}">Carrito</a></li>
                         </div>
                     </div>
                 </div>

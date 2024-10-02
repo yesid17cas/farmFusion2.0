@@ -8,12 +8,14 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductoControllerB;
 
 Route::view('/', 'index')->name('home');
 Route::view('/info','infoProduc')->name('info');
 Route::view('/perfil','verPerfil')->name('verPerfil')->middleware('auth');
 Route::view('/datos','Datos')->name('misDatos')->middleware('auth');
-Route::post('/products/store', [ProductController::class, 'store'])->name('products.store'); 
+Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+Route::get('/buscar', [ProductoControllerB::class, 'buscar']); 
 
 
 // INICIO RUTA DE PRODUCTOS
@@ -27,6 +29,7 @@ Route::middleware('auth')->group(function () {
 // Ruta para crear productos
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::view('/factura','factura')->name('factura');
+
 
 // Ruta para gestionar los productos (CRUD completo)
 Route::resource('products', ProductController::class)->except(['index']); // Elimina 'index' para evitar conflicto con la ruta '/misProductos'

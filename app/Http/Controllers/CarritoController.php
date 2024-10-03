@@ -48,7 +48,15 @@ class CarritoController extends Controller
         }
 
         // definir el costo de envío
-        $envio = 5000;
+        $envio=0;
+
+        if ($subtotal == 0) {
+            $envio=0;
+        }else{
+            $envio=rand(0,10000);
+        }
+
+
         $total = $subtotal + $envio;
 
         return view('carrito', compact('carrito', 'subtotal', 'envio', 'total'));

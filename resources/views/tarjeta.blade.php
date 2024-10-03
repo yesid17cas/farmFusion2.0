@@ -65,6 +65,58 @@
             </div>
         </div>
     </div>
+    <div class="Save">
+        <h2>Tus Trajetas Guardadas</h2>
+        @if (isset($cards) && $cards->isNotEmpty())
+            @foreach ($cards as $card)
+                <div class="tarjeta__card">
+                    <div class="tarjeta__logo">
+                        <xml version="1.0" encoding="UTF-8"?>
+                            <svg width="48px" height="48px" viewBox="0 0 64 64" version="1.1">
+                                <title>Group</title>
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="Group" fill="#FFFFFF">
+                                        <circle id="Oval" cx="16" cy="16" r="16"></circle>
+                                        <circle id="Oval" cx="16" cy="48" r="16"></circle>
+                                        <circle id="Oval" cx="48" cy="16" r="16"></circle>
+                                        <circle id="Oval" cx="48" cy="48" r="16"></circle>
+                                    </g>
+                                </g>
+                            </svg>
+                    </div>
+                    <div class="tarjeta__card-number">
+                        <label for="card_number">Número de tarjeta</label>
+                        <p>**** **** **** {{ $card->digits }} </p>
+                    </div>
+                    <br>
+                    <div class="tarjeta__group">
+                        <div class="tarjeta__card-name">
+                            <label for="full_name">Nombre</label>
+                            <p>{{ $card->name }}</p>
+                        </div>
+                        <div class="tarjeta__expiration-date">
+                            <label for="expiry_date">Fecha Exp</label>
+                            <p> {{ $card->expiry_date }} </p>
+                        </div>
+                        <div class="tarjeta__ccv">
+                            <label for="cvv">Tipo</label>
+                            <p class="brand"> {{ $card->branch }} </p>
+                        </div>
+                    </div>
+                    <!-- Botón de Eliminar -->
+                    <div class="tarjeta__save-button">
+                        <form action="{{ route('tarjeta.eliminar', $card->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" id="tarjeta_save">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <p>No hay tarjetas</p>
+        @endif
+    </div>
 
 @section('scripts')
     <script>

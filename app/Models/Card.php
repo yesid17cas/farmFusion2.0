@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
 {
-    protected $fillable = ['token', 'digits', 'expiry_date', 'user_DocId'];
+    protected $fillable = ['token', 'branch', 'name', 'digits', 'expiry_date', 'user_DocId'];
 
     public function user()
     {

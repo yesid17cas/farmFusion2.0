@@ -48,9 +48,10 @@ Route::get('/producto/{id}', [ProductController::class, 'show'])->name('info');
 
 // Ruta de tarjetas
 
-Route::view('/tarjeta', 'tarjeta')->name('tarjeta')->middleware('auth');
+Route::get('/tarjeta', [CardController::class, 'show'])->name('tarjeta')->middleware('auth');
 
 Route::post('/tarjeta/store', [CardController::class, 'savePaymentMethod'])->name('tarjetas.store');
+Route::delete('/tarjeta/eliminar/{id}', [CardController::class, 'delete'])->name('tarjeta.eliminar');
 
 // fin ruta tarjetas
 

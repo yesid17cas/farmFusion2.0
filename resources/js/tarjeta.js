@@ -32,10 +32,14 @@ cardCvc.mount('#card-cvc');
 const form = document.getElementById('form');
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    const full_name = document.querySelector('#full_name').value
 
     const { paymentMethod, error } = await stripe.createPaymentMethod({
         type: 'card',
-        card: cardNumber, // Verifica que este elemento exista
+        card: cardNumber,
+        billing_details: {
+            name: full_name,
+        }
     });
 
     if (error) {
@@ -66,6 +70,7 @@ form.addEventListener('submit', async (event) => {
         .then((data) => {
             if (data.success) {
                 alert('Tarjeta guardada correctamente');
+                location.reload()
             } else {
                 document.querySelector('#error-message').textContent = 'Hubo un error al guardar la tarjeta'
             }

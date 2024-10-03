@@ -11,7 +11,7 @@ class ProductController extends Controller
     public function index()
     {
         // Obtener los productos del usuario autenticado
-        $productos = Product::where('user_id', auth()->id())->get();
+        $productos = Product::where('user_DocID', auth()->id())->get();
 
         // Retornar la vista 'misProductos' con los productos del usuario
         return view('misProductos', compact('productos'));
@@ -66,7 +66,7 @@ class ProductController extends Controller
             'price' => (int) $price,
             'exits' => $request->input('exits'),
             'image' => $imageName, // Guardar el nombre de la imagen
-            'user_id' => $userId,
+            'user_DocId' => $userId,
         ]);
     
         return redirect()->route('misProductos')->with('success', 'Producto guardado exitosamente.');

@@ -35,6 +35,30 @@
     box-shadow: 5px 5px 4px -1px #00000014;
 }
 
+
+.cantidad{
+    margin: 0;
+    margin-left: 8px;
+}
+
+.btn-cantidad {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.flecha_arriba:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.flecha_abajo:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
 .volver {
     height: 8vh;
     border-bottom: 2px solid #000;

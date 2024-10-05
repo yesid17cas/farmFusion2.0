@@ -18,9 +18,35 @@
             <img src="{{ asset('images/' . $producto['imagen']) }}" alt="{{ $producto['nombre'] }}" /> <!-- Cambia 'image' a 'imagen' -->
             <div class="infoProduc">
                 <b>{{ $producto['nombre'] }}</b> <!-- Cambia 'name' a 'nombre' -->
-                {{-- <p>{{ $producto['nombre'] }}</p> --}}
             </div>
-            <p class="cantidad">{{ $producto['cantidad'] }}</p>
+    
+            <!-- Control de cantidad con flechas -->
+            <div class="cantidad-control">
+                <!-- Botón para aumentar cantidad -->
+                <form method="POST" action="{{ route('carrito.actualizar', $id) }}">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="accion" value="aumentar">
+                    <button type="submit" class="btn-cantidad">
+                        <i class="fa-solid fa-chevron-up flecha_arriba"></i> <!-- Flecha hacia arriba -->
+                    </button>
+                </form>
+
+    
+                <p class="cantidad">{{ $producto['cantidad'] }}</p>
+
+                <!-- Botón para disminuir cantidad -->
+                <form method="POST" action="{{ route('carrito.actualizar', $id) }}">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="accion" value="disminuir">
+                    <button type="submit" class="btn-cantidad">
+                        <i class="fa-solid fa-chevron-down flecha_abajo"></i><!-- Flecha hacia abajo -->
+                    </button>
+                </form>
+    
+            </div>
+    
             <div class="precio">
                 <b>${{ number_format($producto['precio'] * $producto['cantidad'], 0, ',', '.') }}</b> <!-- Cambia 'price' a 'precio' -->
                 <form method="POST" action="{{ route('carrito.eliminar', $id) }}">
@@ -29,10 +55,10 @@
                         <i class="fa-regular fa-trash-can"></i>
                     </button>
                 </form>
-                
             </div>
         </div>
-        @endforeach
+    @endforeach
+    
         
 
     </div>

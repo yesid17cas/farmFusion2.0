@@ -48,13 +48,13 @@ class CarritoController extends Controller
         }
 
         // definir el costo de envío
-        $envio=0;
+        $envio=5000;
 
-        if ($subtotal == 0) {
-            $envio=0;
-        }else{
-            $envio=rand(0,10000);
-        }
+        // if ($subtotal == 0) {
+        //     $envio=0;
+        // }else{
+        //     $envio=rand(0,10000);
+        // }
 
 
         $total = $subtotal + $envio;
@@ -62,24 +62,48 @@ class CarritoController extends Controller
         return view('carrito', compact('carrito', 'subtotal', 'envio', 'total'));
     }
 
-    // Eliminar una unidad del producto en el carrito
+    // Eliminar completamente el producto del carrito
     public function eliminarDelCarrito($id)
     {
+        // Obtener el carrito de la sesión
         $carrito = session()->get('carrito', []);
 
+        // Verificar si el producto existe en el carrito
         if (isset($carrito[$id])) {
-            // Reducir la cantidad en 1
-            $carrito[$id]['cantidad']--;
+            // Eliminar el producto del carrito
+            unset($carrito[$id]);
 
-            // Si la cantidad llega a 0, eliminar el producto del carrito
-            if ($carrito[$id]['cantidad'] <= 0) {
-                unset($carrito[$id]);
-            }
-
+            // Actualizar el carrito en la sesión
             session()->put('carrito', $carrito);
         }
 
-        return redirect()->route('carrito.ver')->with('success', 'Producto actualizado en el carrito');
+        // Redirigir de vuelta a la vista del carrito con un mensaje de éxito
+        return redirect()->route('carrito.ver')->with('success', 'Producto eliminado del carrito');
     }
+
+
+
+    public function actualizar(Request $request, $id)
+    {
+        // Obtener el carrito de la sesión
+        $carrito = session()->get('carrito');
+
+        // Verificar si el producto existe en el carrito
+        if (isset($carrito[$id])) {
+            // Aumentar o disminuir la cantidad
+            if ($request->accion == 'aumentar') {
+                $carrito[$id]['cantidad']++;
+            } elseif ($request->accion == 'disminuir' && $carrito[$id]['cantidad'] > 1) {
+                $carrito[$id]['cantidad']--;
+            }
+        }
+
+        // Guardar el carrito actualizado en la sesión
+        session()->put('carrito', $carrito);
+
+        // Redireccionar de vuelta a la vista del carrito
+        return redirect()->back();
+    }
+
 
 }

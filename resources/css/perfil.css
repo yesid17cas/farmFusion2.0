@@ -67,10 +67,8 @@ h5 {
 
 .btn-primary {
   background: #cd6f1f;
-  border: 1px solid #fff;
 }
 
 .btn-primary:hover {
   background: #dc965a;
-  border-color: #ffff;
 }

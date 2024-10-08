@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
+use App\Models\Card;
 
 class CarritoController extends Controller
 {
@@ -56,10 +57,11 @@ class CarritoController extends Controller
             $envio=rand(0,10000);
         }
 
+        $cards = Card::where('user_DocID', auth()->id())->get();
 
         $total = $subtotal + $envio;
 
-        return view('carrito', compact('carrito', 'subtotal', 'envio', 'total'));
+        return view('carrito', compact('carrito', 'subtotal', 'envio', 'total', 'cards'));
     }
 
     // Eliminar una unidad del producto en el carrito

@@ -16,7 +16,7 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->string('token');
-            $table->string('branch');
+            $table->string('brand');
             $table->string('name');
             $table->string('digits', 4);
             $table->string('expiry_date', 7);

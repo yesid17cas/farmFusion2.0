@@ -11,11 +11,11 @@
                             <span class="line line3"></span>
                         </div>
                         <div class="menu-items">
-                            <li><a href="{{route('misDatos')}}">Ver Perfil</a></li>
-                            <li><a href="{{route('misProductos')}}">Mis Productos</a></li>
-                            <li><a href="{{route('catalogo')}}">Catálogo</a></li>
-                            <li><a href="{{route('verPerfil')}}">Configuraciones</a></li>
-                            <li><a href="{{route('carrito.ver')}}">Carrito</a></li>
+                            <li><a href="{{route('misDatos')}}" class="nav-item nav-link {{request()->routeIs('misDatos') ? 'active' : ''}}">Ver Perfil</a></li>
+                            <li><a href="{{route('misProductos')}}" class="nav-item nav-link {{request()->routeIs('misProductos') ? 'active' : ''}}">Mis Productos</a></li>
+                            <li><a href="{{route('catalogo')}}" class="nav-item nav-link {{request()->routeIs('catalogo') ? 'active' : ''}}">Catálogo</a></li>
+                            <li><a href="{{route('verPerfil')}}" class="nav-item nav-link {{request()->routeIs('verPerfil') ? 'active' : ''}}">Configuraciones</a></li>
+                            <li><a href="{{route('carrito.ver')}}" class="nav-item nav-link {{request()->routeIs('carrito.ver') ? 'active' : ''}}">Carrito</a></li>
                         </div>
                     </div>
                 </div>

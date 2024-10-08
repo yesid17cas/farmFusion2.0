@@ -4,76 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{Vite::asset('resources/img/Logo-2.0.ico')}}" rel="icon" />
+    <link href="{{ Vite::asset('resources/img/Logo-2.0.ico') }}" rel="icon" />
     @vite('resources/css/login.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>FarmFusion</title>
+    @livewireStyles
 </head>
 
 <body>
 
     <div class="container" id="container">
         <a href="{{ route('home') }}" class="btn-back"><i class="fa-solid fa-chevron-left"></i>Regresar</a>
-        <div class="form-container sign-up-container">
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-                <h1>Registrarse</h1>
-                <span>Utiliza tu correo electrónico para registrarte</span>
-                {{-- Campo DocId --}}
-                <input id="DocId" name="DocId" type="number" placeholder="Numero Documento"
-                    class="@error('DocId') is-invalid @enderror" value="{{ old('DocId') }}" required
-                    autocomplete="DocId" />
-                @error('DocId')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+        
+        @livewire('register')
 
-                {{-- Campo nombre --}}
-                <input id="name" name="name" type="text" placeholder="Nombre"
-                    class="@error('name') is-invalid @enderror" value="{{ old('name') }}" required
-                    autocomplete="name" />
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-
-                {{-- Campo apellido --}}
-                <input id="lastname" name="lastname" type="text" placeholder="Apellidos"
-                    class="@error('lastname') is-invalid @enderror" value="{{ old('lastname') }}" required
-                    autocomplete="lastname" />
-                @error('lastname')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                
-                {{-- Campo Email --}}
-                <input type="email" placeholder="Email" id="email-register" @error('email') is-invalid @enderror
-                    name="email" value="{{ old('email') }}" required autocomplete="email" />
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-
-                {{-- Campo contraseña --}}
-                <input type="password" placeholder="contraseña" id="password-register"
-                    class="@error('password') is-invalid @enderror" name="password" required
-                    autocomplete="new-password" />
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                <input id="password-confirm" type="password" placeholder="Confirmar Contraseña"
-                    name="password_confirmation" required autocomplete="new-password">
-                <button>Regístrate</button>
-            </form>
-        </div>
         <div class="form-container sign-in-container">
             <form action="{{ route('login') }}" method="POST">
                 @csrf
@@ -120,6 +66,8 @@
 
     </footer>
     @vite('resources/js/script.js')
+
+    @livewireScripts
 </body>
 
 </html>

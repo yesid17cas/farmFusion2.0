@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB; // Para usar el Query Builder si no usas Eloquent
+use Illuminate\Support\Facades\Log;
 
 class ProductoControllerB extends Controller
 {
@@ -14,9 +15,11 @@ class ProductoControllerB extends Controller
 
         // Buscar productos en la base de datos que coincidan con el nombre (usando LIKE)
         $productos = DB::table('products') // Asumiendo que tu tabla se llama 'productos'
-            ->where('nombre', 'like', '%' . $query . '%')
+            ->where('name', 'like', '%' . $query . '%')
             ->get();
 
+
+        Log::info($productos);
         // Si no se encontraron productos, devolver un error
         if ($productos->isEmpty()) {
             return response()->json(['error' => 'Producto no disponible']);

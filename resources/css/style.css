@@ -3,8 +3,8 @@
   --azul-hover: #449eff;
   --verde: #25cd53;
   --verde-hover: #25cd53a8;
-  --amarillo: #ffd700;
-  --amarillo-hover: #ffbf00;
+  --amarillo: #cd6f1f;
+  --amarillo-hover: #dc965a;
   --rojo: #ff6347;
   --rojo-hover: #ff6347cc;
   --texto: "Poppins", sans-serif;
@@ -1240,4 +1240,10 @@ h6 {
 button.nav-link {
   background: transparent;
   border: none;
+}
+
+.btnBuscar button {
+  background: transparent;
+  border: none;
+  color: #fff;
 }

@@ -7,8 +7,8 @@ use App\Models\Product;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PaymentController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductoControllerB;
+use Illuminate\Support\Facades\Auth;
 
 Route::view('/', 'index')->name('home');
 Route::view('/info','infoProduc')->name('info');
@@ -55,10 +55,7 @@ Route::delete('/tarjeta/eliminar/{id}', [CardController::class, 'delete'])->name
 
 // fin ruta tarjetas
 
-Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
-Route::post('/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
-Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.process');
-Route::get('/payment/form', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::post('/payment/save', [PaymentController::class, 'processPayment'])->name('payment.process');
 Route::get('/payment/intent', [PaymentController::class, 'createPaymentIntent']);
 
 

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let stripe = Stripe("pk_test_51PwuvPBd00zAvLLvcs61LQ3pR70iOEBTnzUInxPVthKarPlVOtTmqLQfv25DYunihyYWSbbQtmMOxPMIUYUY5O2e00sYniYICy");
+  let stripe = Stripe("pk_test_51Q70TZJPTjj11sGIWsESON5DDd8zbKh57Y3QDG8xA7dcyfA3oh6hzHQTra7WKWdn1ky2t6nshoFEhgVWkRHB6GpI00boG1q4Cl");
   let elements = stripe.elements();
   const form = document.getElementById('payment-form');
 
@@ -27,22 +27,25 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
 
     const savedCard = document.querySelector('select[name="saved_card"]').value;
-    const paymentMethod = savedCard ? { id: savedCard } : { card: cardElement };
 
     try {
-      fetch('/payment/intent')
-        .then((response) => response.json())
-        .then((data) => {
-          const clientSecret = data.clientSecret;
+      if (savedCard) {
+        fetch('/payment/save', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Token CSRF de Laravel
+          },
+          body: JSON.stringify({
+            payment_method: savedCard // Aquí va el ID del método de pago o el token de la tarjeta guardada
+          })
+        })
+          .then(function (response) {
 
-          stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-              card: cardElement,
-              billing_details: {
-                name: 'Nombre del Cliente',
-              },
-            },
-          }).then((result) => {
+            return response.json();
+          })
+          .then((result) => {
+            console.log(result)
             if (result.error) {
               document.querySelector('#error-message').textContent = result.error.message;
             } else {
@@ -50,9 +53,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = '/factura'
               }
             }
+          })
+          .catch(function (error) {
+            console.error('Error en la solicitud:', error);
           });
-        });
-
+      } else {
+        fetch('/payment/intent')
+          .then((response) => response.json())
+          .then((data) => {
+            const clientSecret = data.clientSecret;
+            stripe.confirmCardPayment(clientSecret, {
+              payment_method: {
+                card: cardElement,
+              },
+            }).then((result) => {
+              if (result.error) {
+                document.querySelector('#error-message').textContent = result.error.message;
+              } else {
+                if (result.paymentIntent.status === 'succeeded') {
+                  window.location.href = '/factura'
+                }
+              }
+            });
+          });
+      }
     } catch (error) {
       document.querySelector('#error-message').textContent = 'Error al procesar el pago. Intenta nuevamente.';
     }

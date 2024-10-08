@@ -1,4 +1,4 @@
-const stripe = Stripe('pk_test_51PwuvPBd00zAvLLvcs61LQ3pR70iOEBTnzUInxPVthKarPlVOtTmqLQfv25DYunihyYWSbbQtmMOxPMIUYUY5O2e00sYniYICy');
+const stripe = Stripe('pk_test_51Q70TZJPTjj11sGIWsESON5DDd8zbKh57Y3QDG8xA7dcyfA3oh6hzHQTra7WKWdn1ky2t6nshoFEhgVWkRHB6GpI00boG1q4Cl');
 const elements = stripe.elements();
 
 // Crear estilos para los campos de la tarjeta (opcional)

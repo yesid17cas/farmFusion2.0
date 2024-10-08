@@ -53,7 +53,7 @@ class CardController extends Controller
             // Guardar los detalles de la tarjeta en la base de datos
             Card::create([
                 'token' => $paymentMethod->id, // ID del método de pago
-                'branch' => $paymentMethod->card->brand,
+                'brand' => $paymentMethod->card->brand,
                 'name' => $paymentMethod->billing_details->name,
                 'digits' => $paymentMethod->card->last4, // Últimos 4 dígitos de la tarjeta
                 'expiry_date' => $paymentMethod->card->exp_month . '/' . $paymentMethod->card->exp_year, // Fecha de caducidad

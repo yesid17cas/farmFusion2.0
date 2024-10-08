@@ -100,7 +100,7 @@
                         </div>
                         <div class="tarjeta__ccv">
                             <label for="cvv">Tipo</label>
-                            <p class="brand"> {{ $card->branch }} </p>
+                            <p class="brand"> {{ $card->brand }} </p>
                         </div>
                     </div>
                     <!-- Botón de Eliminar -->

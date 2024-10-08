@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Stripe\Stripe;
 use Stripe\Charge;
+use Stripe\PaymentIntent;
+use Stripe\PaymentMethod;
 
 class PaymentController extends Controller
 {
@@ -15,53 +19,38 @@ class PaymentController extends Controller
         Stripe::setApiKey(env('STRIPE_SECRET'));
     }
 
-    public function showPaymentForm()
-    {
-        $cards = auth()->user()->cards;
-        return view('carrito', compact('cards'));
-    }
 
     public function processPayment(Request $request)
     {
-        Stripe::setApiKey(env('STRIPE_SECRET'));
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        $paymentMethod = $request->input('saved_card') ?: $request->input('stripeToken');
-
-        if (!$paymentMethod) {
-            return redirect()->back()->with('error', 'Método de pago inválido');
-        }
 
         try {
-            $charge = Charge::create([
-                'amount' => $request->input('amount'), // Debe ser dinámico
+            $paymentIntent = PaymentIntent::create([
+                'amount' => 2000, // Monto en centavos, por ejemplo, 20.00 USD
                 'currency' => 'usd',
-                'description' => 'Compra en tienda',
-                'source' => $paymentMethod,
+                'payment_method' => $request->payment_method, // Token de la tarjeta guardado o ID del método de pago
+                'customer' => User::where('DocID', auth()->id())->value('stripe_customer_id'),
+                'confirm' => true,
+                'return_url' => route('factura'),
             ]);
 
-            if (!$request->input('saved_card')) {
-                $customer = \Stripe\Customer::create([
-                    'email' => auth()->user()->email,
-                    'source' => $paymentMethod,
-                ]);
-
-                $card = $customer->sources->retrieve($customer->default_source);
-                Card::create([
-                    'user_id' => auth()->id(),
-                    'digits' => $card->last4,
-                    'token' => $paymentMethod,
-                    'expiry_date' => now()->setMonth($card->exp_month)->setYear($card->exp_year),
-                ]);
-            }
-
-            return redirect()->route('/factura');
+            return response()->json([
+                'success' => true,
+                'paymentIntent' => $paymentIntent
+            ]);
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+            Log::info($e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ], 500);
         }
     }
 
     public function createPaymentIntent()
     {
+
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $paymentIntent = \Stripe\PaymentIntent::create([

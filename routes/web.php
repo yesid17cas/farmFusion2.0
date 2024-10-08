@@ -64,6 +64,8 @@ Route::get('/payment/intent', [PaymentController::class, 'createPaymentIntent'])
 Route::post('/carrito/agregar/{id}', [CarritoController::class, 'agregarAlCarrito'])->name('carrito.agregar');
 Route::get('/carrito', [CarritoController::class, 'verCarrito'])->name('carrito.ver');
 Route::post('/carrito/eliminar/{id}', [CarritoController::class, 'eliminarDelCarrito'])->name('carrito.eliminar');
+Route::patch('/carrito/{id}/actualizar', [CarritoController::class, 'actualizar'])->name('carrito.actualizar');
+
 
 // fin ruta de carrito
 Auth::routes();

@@ -21,6 +21,7 @@
     @vite('resources/css/style.css')
     @yield('style');
     @yield('scripts')
+    @livewireStyles
 
 </head>
 
@@ -39,6 +40,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <!-- Template Javascript -->
     @yield('javaScript')
+    @livewireScripts
 </body>
 
 </html>

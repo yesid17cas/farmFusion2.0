@@ -1067,6 +1067,7 @@ h6 {
 .buscar {
   position: relative;
   padding: 9px;
+  margin-top: 2vh;
 }
 
 .buscar input {
@@ -1086,7 +1087,7 @@ h6 {
   height: 55px;
   line-height: 55px;
   top: 0;
-  right: 0;
+  left: 0;
   position: absolute;
   background: var(--verde);
   text-align: center;
@@ -1098,10 +1099,12 @@ h6 {
 
 .buscar:hover input {
   width: 240px;
+  padding: 0 20px 0 48px;
 }
 
 .buscar input:focus {
   width: 240px;
+  padding: 0 20px 0 48px;
 }
 
 /* Boton herramientas */
@@ -1246,4 +1249,30 @@ button.nav-link {
   background: transparent;
   border: none;
   color: #fff;
+}
+
+#resultado{
+  position: absolute;
+  margin-top: 2vh;
+  right: 37%;
+  background: #fff;
+  box-shadow: -10px 10px 20px 0px rgba(0,0,0,0.75);
+}
+
+.product{
+  width: 21vw;
+}
+
+.product img{
+  width: 50%;
+  height: 50%;
+}
+
+.product li{
+  list-style: none;
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: -3vw;
 }

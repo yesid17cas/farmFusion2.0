@@ -30,6 +30,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
+                    @livewire('busqueda')
                     <a href="{{route('home')}}" class="nav-item nav-link {{request()->routeIs('home') ? 'active' : ''}}">Inicio</a>
                     <a href="{{route('home') . '#farmFusionAcerca'}}" class="nav-item nav-link">Acerca de Nosotros</a>
                     <a href="{{route('home') . '#farmFusionTeam'}}" class="nav-item nav-link">Team</a>
@@ -40,18 +41,7 @@
                 </div>
             </div>
 
-            <!-- Formulario de búsqueda -->
-            <div class="buscar">
-                <form id="form-busqueda" action="{{ url('/buscar') }}" method="GET">
-                    <input type="text" id="buscar" name="query" placeholder="Buscar producto..." required />
-                    <div class="btnBuscar">
-                        <button type="submit"><i class="fas fa-search icon"></i></button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Resultados de la búsqueda -->
-            <div id="resultado"></div>
+            
         </nav>
     </div>
 </header>

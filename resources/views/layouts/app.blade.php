@@ -22,6 +22,7 @@
     @vite('resources/css/olvidoClv.css')
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <title>Recuperar contraseña</title>
+    @livewireStyles
 </head>
 
 <body>
@@ -29,7 +30,7 @@
     <div class="container" id="container">
         @yield('content')
     </div>
-
+    @livewireScripts
 </body>
 
 </html>

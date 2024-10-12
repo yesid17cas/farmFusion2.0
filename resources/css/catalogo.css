@@ -94,6 +94,21 @@
     cursor: pointer;
 }
 
+.entradas-btn{
+    background-color: #007bff; /* Rojo */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.entradas-btn:hover{
+    background-color: #449eff;
+}
 
 
 .delete-btn:hover, .edit-btn:hover {
@@ -104,6 +119,9 @@
 /* Estilo para el botón de agregar producto */
 .button-container{
     margin-top: 2rem;
+    position: absolute;
+    top: 20vh;
+    right: 3vw;
 }
 .add-product-btn {
     background-color: #25cd53;

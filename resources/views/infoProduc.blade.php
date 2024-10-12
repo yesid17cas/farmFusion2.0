@@ -11,6 +11,7 @@
                 {{ $producto->name }} <br />
                 ${{ number_format($producto->price, 0, ',', '.') }}
             </b>
+            <p>Existencias: {{$producto->exits}} </p>
             <p>
                 <!--descripción del producto -->
                 

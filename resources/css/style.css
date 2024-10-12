@@ -1259,16 +1259,16 @@ button.nav-link {
   box-shadow: -10px 10px 20px 0px rgba(0,0,0,0.75);
 }
 
-.product{
+.productBusqueda{
   width: 21vw;
 }
 
-.product img{
+.productBusqueda img{
   width: 50%;
   height: 50%;
 }
 
-.product li{
+.productBusqueda li{
   list-style: none;
   display: flex;
     flex-direction: row;

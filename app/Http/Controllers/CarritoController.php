@@ -49,13 +49,13 @@ class CarritoController extends Controller
         }
 
         // definir el costo de envío
-        $envio=5000;
+        $envio=0;
 
-        // if ($subtotal == 0) {
-        //     $envio=0;
-        // }else{
-        //     $envio=rand(0,10000);
-        // }
+        if ($subtotal == 0) {
+            $envio=0;
+        }else{
+            $envio=rand(0,10000);
+        }
 
         $cards = Card::where('user_DocID', auth()->id())->get();
 

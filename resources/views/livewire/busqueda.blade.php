@@ -10,7 +10,7 @@
 
     <!-- Resultados de la búsqueda -->
     <div id="resultado">
-        <div class="product">
+        <div class="productBusqueda">
             @if ($search != '')
                 @if ($articulos->isEmpty())
                     <ul>

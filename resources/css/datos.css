@@ -162,11 +162,3 @@
 .profile-section:active .edit-icon {
     display: block; /* Muestra el icono al hacer clic */
 }
-
-.info{
-  font-size: 20px;
-}
-
-.hidden{
-  display: none;
-}

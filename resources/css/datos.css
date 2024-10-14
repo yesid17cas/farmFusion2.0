@@ -10,6 +10,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
+    width: 50vw;
   }
 
   .profile-section {
@@ -42,6 +43,7 @@
     border-radius: 8px;
     border: 1px solid #ddd;
     padding: 10px;
+    width: 57%;
   }
 
   .form-controlDatos:focus {
@@ -159,4 +161,12 @@
 /* Para hacer visible el ícono al hacer clic en la imagen */
 .profile-section:active .edit-icon {
     display: block; /* Muestra el icono al hacer clic */
+}
+
+.info{
+  font-size: 20px;
+}
+
+.hidden{
+  display: none;
 }

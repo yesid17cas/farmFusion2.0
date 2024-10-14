@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
               document.querySelector('#error-message').textContent = result.error.message;
             } else {
               if (result.paymentIntent.status === 'succeeded') {
-                window.location.href = '/factura'
+                window.location.href = '/eliminar'
               }
             }
           })
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.querySelector('#error-message').textContent = result.error.message;
               } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                  window.location.href = '/factura'
+                  window.location.href = '/eliminar'
                 }
               }
             });

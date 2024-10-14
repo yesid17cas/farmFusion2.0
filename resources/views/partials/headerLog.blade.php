@@ -14,8 +14,9 @@
                             <li><a href="{{route('misDatos')}}" class="nav-item nav-link {{request()->routeIs('misDatos') ? 'active' : ''}}">Ver Perfil</a></li>
                             <li><a href="{{route('misProductos')}}" class="nav-item nav-link {{request()->routeIs('misProductos') ? 'active' : ''}}">Mis Productos</a></li>
                             <li><a href="{{route('catalogo')}}" class="nav-item nav-link {{request()->routeIs('catalogo') ? 'active' : ''}}">Catálogo</a></li>
-                            <li><a href="{{route('verPerfil')}}" class="nav-item nav-link {{request()->routeIs('verPerfil') ? 'active' : ''}}">Configuraciones</a></li>
+                            <li><a href="{{route('config')}}" class="nav-item nav-link {{request()->routeIs('config') ? 'active' : ''}}">Configuraciones</a></li>
                             <li><a href="{{route('carrito.ver')}}" class="nav-item nav-link {{request()->routeIs('carrito.ver') ? 'active' : ''}}">Carrito</a></li>
+                            <li><a href="{{route('compras')}}" class="nav-item nav-link {{request()->routeIs('compras') ? 'active' : ''}}">Lista de compras</a></li>
                         </div>
                     </div>
                 </div>

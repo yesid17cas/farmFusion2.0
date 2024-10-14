@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Card;
+use App\Models\Output;
+use App\Models\Productsoutput;
 
 class CarritoController extends Controller
 {
@@ -23,6 +25,7 @@ class CarritoController extends Controller
         } else {
             // Si no está, lo añadimos con cantidad 1
             $carrito[$id] = [
+                'id' => $producto->id,
                 'nombre' => $producto->name,
                 'precio' => $producto->price,
                 'cantidad' => 1,
@@ -60,6 +63,8 @@ class CarritoController extends Controller
         $cards = Card::where('user_DocID', auth()->id())->get();
 
         $total = $subtotal + $envio;
+
+        session()->put('total', $total);
 
         return view('carrito', compact('carrito', 'subtotal', 'envio', 'total', 'cards'));
     }
@@ -107,5 +112,31 @@ class CarritoController extends Controller
         return redirect()->back();
     }
 
+    public function limpiar() {
+
+        $carrito= session()->get('carrito', []);
+
+        $total = session()->get('total', 0);
+
+        $orders= Output::create([
+            'pay' => $total,
+            'user_DocId' => auth()->user()->DocId
+        ]);
+
+        $salidaId = $orders->id;
+
+        foreach ($carrito as $producto) {
+            Productsoutput::create([
+                'product_id'=>$producto['id'],
+                'output_id'=>$salidaId,
+                'amount'=>$producto['cantidad'],
+                'price'=>$producto['precio'],
+            ]);
+        }
+
+        session()->put('carrito', []);
+
+        return redirect()->route('pedidos.show', ['id' => $salidaId]);
+    }
 
 }

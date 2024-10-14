@@ -1,5 +1,5 @@
 <div class="form-container sign-up-container">
-    <form wire:submit="createUser">
+    <form wire:submit.prevent="createUser">
         <h1>Registrarse</h1>
         <span>Utiliza tu correo electrónico para registrarte</span>
         {{-- Campo DocId --}}

@@ -531,6 +531,7 @@ h6 {
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
+  z-index: 1;
 }
 
 .navbar-brand:hover,
@@ -1204,12 +1205,11 @@ h6 {
   background-color: #fff;
   padding-top: 120px;
   height: 100vh;
-  width: 1155%;
+  width: 780%;
   transform: translate(-286%);
   display: flex;
   flex-direction: column;
-  margin-left: -40px;
-  padding-left: 50px;
+  margin-left: -3em;
   transition: transform 0.5s ease-in-out;
   text-align: center;
 }
@@ -1251,28 +1251,35 @@ button.nav-link {
   color: #fff;
 }
 
-#resultado{
+#resultado {
   position: absolute;
-  margin-top: 2vh;
-  right: 37%;
+  margin-top: 3vh;
+  right: 35%;
   background: #fff;
-  box-shadow: -10px 10px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: -10px 10px 20px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 1em;
 }
 
-.productBusqueda{
-  width: 21vw;
+.productBusqueda {
+  width: 27vw;
 }
 
-.productBusqueda img{
+.productBusqueda img {
   width: 50%;
   height: 50%;
 }
 
-.productBusqueda li{
+.productBusqueda li {
   list-style: none;
   display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    margin-left: -3vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: -3vw;
+  overflow-y: auto;
+  max-height: 54vh;
+}
+
+.productBusqueda li div h4 {
+  margin-bottom: 0;
 }

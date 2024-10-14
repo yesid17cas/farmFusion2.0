@@ -14,14 +14,23 @@
                 Síguenos
             </h6>
             <div class="d-flex justify-content-start">
-                <a class="btn btn-outline-primary btn-square mr-2" href="https://x.com/FarmFusion29240"><i
-                        class="fa-brands fa-x-twitter"></i></a>
+                <a class="btn btn-outline-primary btn-square mr-2" href="https://x.com/FarmFusion29240" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
                 <a class="btn btn-outline-primary btn-square mr-2"
-                    href="https://www.facebook.com/profile.php?id=61564978311533"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-outline-primary btn-square mr-2" href="https://www.youtube.com/@Farmfusion2024"><i
-                        class="fa-brands fa-youtube"></i></a>
-                <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/farmfusion8/"><i
-                        class="fab fa-instagram"></i></a>
+                    href="https://www.facebook.com/profile.php?id=61564978311533" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-outline-primary btn-square mr-2" href="https://www.youtube.com/@Farmfusion2024"
+                    target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/farmfusion8/"
+                    target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">

@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->hasMany(Card::class); // Relación con el modelo 'Card'
     }
 
+    public function outputs(): HasMany
+    {
+        return $this->hasMany(Output::class); // Relación con el modelo 'Output'
+    }
+
     public function sendPasswordResetNotification($token)
     {
         // Aquí enviamos el token y el usuario (this) al Mailable personalizado

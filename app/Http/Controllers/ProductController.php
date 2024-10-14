@@ -26,13 +26,6 @@ class ProductController extends Controller
         return view('catalogo', compact('productos'));
     }
 
-
-    // Método para crear un producto (formulario)
-    public function create()
-    {
-        return view('FormProduc'); // Asegúrate de que esta vista existe en resources/views
-    }
-
     // Método para almacenar un producto
 
     

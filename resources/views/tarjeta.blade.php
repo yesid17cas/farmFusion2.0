@@ -117,7 +117,16 @@
             <p>No hay tarjetas</p>
         @endif
     </div>
-
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="text-center">
+                <i class="fas fa-check-circle check-icon"></i>
+                <p>¡Se guardó correctamente!</p>
+            </div>
+        </div>
+    </div>
+    
 @section('scripts')
     <script>
         function formatCardNumber(input) {
@@ -134,6 +143,46 @@
             }
             input.value = value;
         }
+     
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Código para el modal
+
+            function abrirmodal() {
+                document.querySelector('#tarjeta_save').addEventListener('click', function() {
+                    const modal = document.getElementById('editModal');
+                    modal.style.display = "block"; // Mostrar el modal
+                    document.querySelector('.check-icon').classList.add('animate-check');
+                });
+           
+            }            
+
+            // Cerrar el modal
+            document.querySelector('.close').addEventListener('click', function() {
+                document.getElementById('tarjeta_save').style.display = "none";
+                document.querySelector('.check-icon').classList.remove('animate-check');
+            });
+
+            // Cerrar el modal cuando se haga clic fuera de él
+            window.onclick = function(event) {
+                const modal = document.getElementById('tarjeta_save');
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    document.querySelector('.check-icon').classList.remove('animate-check');
+                }
+            }
+
+            document.getElementById('upload-photo').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('profile-img').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+        
     </script>
 @endsection
 

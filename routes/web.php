@@ -32,7 +32,7 @@ Route::view('/factura','factura')->name('factura');
 
 
 // Ruta para gestionar los productos (CRUD completo)
-Route::resource('products', ProductController::class)->except(['index']); // Elimina 'index' para evitar conflicto con la ruta '/misProductos'
+Route::resource('products', ProductController::class)->except(['index','destroy']); // Elimina 'index' para evitar conflicto con la ruta '/misProductos'
 
 // Ruta para mostrar el catálogo de productos
 Route::get('/catalogo', [ProductController::class, 'catalogo'])->name('catalogo');

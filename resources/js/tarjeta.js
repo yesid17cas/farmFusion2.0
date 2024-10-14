@@ -69,7 +69,7 @@ form.addEventListener('submit', async (event) => {
         })
         .then((data) => {
             if (data.success) {
-                alert('Tarjeta guardada correctamente');
+                abrirmodal();
                 location.reload()
             } else {
                 document.querySelector('#error-message').textContent = 'Hubo un error al guardar la tarjeta'

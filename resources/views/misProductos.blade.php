@@ -2,14 +2,16 @@
 
 @section('content')
     <div class="containerCatalogo">
-
         <h3 class="title">Mis Productos</h3>
 
         <!-- Botón de agregar producto -->
         <div class="button-container">
-            {{-- abre @livewire('crear') --}}
-            <a href="{{ route('products.create') }}" class="add-product-btn">Agregar Producto</a>
+            <a href="javascript:void(0)" class="add-product-btn" id="showAddProductModal">
+                <span class="icon">+</span> <!-- Ícono de más -->
+                <span class="text">Agregar Producto</span> <!-- Texto -->
+            </a>
         </div>
+
         <div class="products-container">
             <!-- Mostrar todos los productos -->
             @foreach ($productos as $producto)
@@ -26,20 +28,59 @@
                             Editar
                         </button>
 
-                        {{-- Abre @livewire('bajas') --}}
-                        <button type="submit" class="delete-btn">Bajas</button>
+                        <button class="delete-btn" data-id="{{ $producto->id }}" data-name="{{ $producto->name }}">
+                            Bajas
+                        </button>
 
-                        {{-- Abre @livewire('entradas') --}}
-                        <button type="submit" class="entradas-btn">Entradas</button>
+                        <button class="entradas-btn" data-id="{{ $producto->id }}" data-name="{{ $producto->name }}">
+                            Entradas
+                        </button>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
 
-    @livewire('bajas')
-    @livewire('entradas')
-    @livewire('crear')
+   
+
+    <!-- Modal de agregar producto -->
+    <div id="addProductModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-add-product">&times;</span>
+            <h2>Agregar Producto</h2>
+
+            <form id="addProductForm" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <div class="form-group">
+                    <label for="addProductName">Nombre:</label>
+                    <input type="text" id="addProductName" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="addProductDescription">Descripción:</label>
+                    <input type="text" id="addProductDescription" name="description" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="addProductPrice">Precio:</label>
+                    <input type="text" id="addProductPrice" name="price" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="addProductExits">Existencias:</label>
+                    <input type="number" id="addProductExits" name="exits" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="addProductImage">Imagen:</label>
+                    <input type="file" id="addProductImage" name="image" required>
+                </div>
+
+                <button type="submit" class="save-btn">Agregar Producto</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Modal de edición -->
     <div id="editModal" class="modal" style="display: none;">
@@ -71,7 +112,7 @@
                 <div class="form-group">
                     <label for="exits">Existencias:</label>
                     <input type="number" id="exits" name="exits" required>
-                </div> <br>
+                </div> 
 
                 <div class="form-group">
                     <label for="image">Imagen:</label>
@@ -82,6 +123,80 @@
             </form>
         </div>
     </div>
+
+    <!-- Modal de bajas -->
+    <div id="bajasModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-bajas">&times;</span>
+            <h2>Bajas</h2>
+
+            <!-- Información del producto -->
+            <p>Nombre del Producto: <span id="bajasProductoNombre"></span></p>
+
+            <!-- Formulario de bajas -->
+            <form id="bajasForm" action="" method="POST">
+                @csrf
+                <input type="hidden" id="bajasProductId" name="producto_id" value="">
+
+                <div class="form-group">
+                    <label for="bajasMotivo">Motivo de la Baja:</label>
+                    <textarea id="bajasMotivo" name="motivo" rows="4" cols="50" placeholder="Escribe el motivo de la baja..." required></textarea>
+                </div>
+
+                <p>¿Está seguro que desea eliminar este producto?</p>
+
+                <div class="button-container21">
+                    <button type="submit" class="btn-lrg submit-btn">Confirmar</button>
+                    <button type="button" class="cancel-btn">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de entradas -->
+    <!-- Modal de entradas -->
+    <div id="entradasModal" class="modal-entradas" style="display: none;">
+    <div class="modal-content-entradas">
+        <span class="close-entradas">&times;</span>
+        
+        <!-- Subtítulo -->
+        <h2 class="subtitulo-entradas">Entradas</h2>
+
+        <form id="entradasForm" action="" method="POST">
+            @csrf
+
+            <input type="hidden" id="entradasProductId" name="producto_id" value="">
+
+            <div class="containerForm">
+                <div class="row input-container-entradas">
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <label for="producto_nombre">Nombre del Producto:</label>
+                            <input class="inputcastaño" type="text" id="producto_nombre" name="producto_nombre" value="" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Espacio entre el nombre del producto y la cantidad -->
+                    <div class="col-xs-12" style="height: 20px;"></div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="styled-input">
+                            
+                            <label for="cantidad">Cantidad de entradas:</label>
+                            <input class="inputcastaño" type="number" id="cantidad" name="cantidad" min="1" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn-submit-entradas">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
 @endsection
 
 @section('style')
@@ -91,7 +206,26 @@
 @section('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            // Código para el modal
+            // Código para el modal de agregar producto
+            document.getElementById('showAddProductModal').addEventListener('click', function() {
+                const modal = document.getElementById('addProductModal');
+                modal.style.display = "block"; // Mostrar el modal
+            });
+
+            // Cerrar el modal de agregar producto
+            document.querySelector('.close-add-product').addEventListener('click', function() {
+                document.getElementById('addProductModal').style.display = "none";
+            });
+
+            // Cerrar el modal de agregar producto cuando se haga clic fuera de él
+            window.onclick = function(event) {
+                const modal = document.getElementById('addProductModal');
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Código para el modal de edición
             document.querySelectorAll('.edit-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const modal = document.getElementById('editModal');
@@ -105,26 +239,91 @@
                     const exits = this.getAttribute('data-exits');
                     const image = this.getAttribute('data-image');
 
-                    // Llenar el formulario del modal con los datos del producto
+                    // Llenar la información del producto en el modal
                     document.getElementById('productId').value = id;
                     document.getElementById('name').value = name;
                     document.getElementById('descrition').value = descrition;
                     document.getElementById('price').value = price;
                     document.getElementById('exits').value = exits;
 
-                    // Actualizar la acción del formulario con la URL correcta
-                    document.getElementById('editForm').action = `/products/${id}`;
+                    // Aquí puedes agregar el código para mostrar la imagen si lo deseas
                 });
             });
 
-            // Cerrar el modal
+            // Cerrar el modal de edición
             document.querySelector('.close').addEventListener('click', function() {
                 document.getElementById('editModal').style.display = "none";
             });
 
-            // Cerrar el modal cuando se haga clic fuera de él
+            // Cerrar el modal de edición cuando se haga clic fuera de él
             window.onclick = function(event) {
                 const modal = document.getElementById('editModal');
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Código para el modal de bajas
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = document.getElementById('bajasModal');
+                    modal.style.display = "block"; // Mostrar el modal
+
+                    // Obtener el ID y nombre del producto
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+
+                    // Llenar la información del producto en el modal
+                    document.getElementById('bajasProductId').value = id;
+                    document.getElementById('bajasProductoNombre').textContent = name;
+
+                    // Actualizar la acción del formulario con la URL correcta
+                    document.getElementById('bajasForm').action = `/products/${id}/bajas`;
+                });
+            });
+
+            // Cerrar el modal de bajas
+            document.querySelector('.close-bajas').addEventListener('click', function() {
+                document.getElementById('bajasModal').style.display = "none";
+            });
+
+            // Cerrar el modal de bajas cuando se haga clic fuera de él
+            window.onclick = function(event) {
+                const modal = document.getElementById('bajasModal');
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Cancelar botón del modal de bajas
+            document.querySelector('.cancel-btn').addEventListener('click', function() {
+                document.getElementById('bajasModal').style.display = "none";
+            });
+
+            // Código para el modal de entradas
+            document.querySelectorAll('.entradas-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = document.getElementById('entradasModal');
+                    modal.style.display = "block"; // Mostrar el modal
+
+                    // Obtener el ID y nombre del producto
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+
+                    // Llenar la información del producto en el modal
+                    document.getElementById('entradasProductId').value = id;
+                    document.getElementById('producto_nombre').value = name; // Se habilita solo en el modal
+                });
+            });
+
+            // Cerrar el modal de entradas
+            document.querySelector('.close-entradas').addEventListener('click', function() {
+                document.getElementById('entradasModal').style.display = "none";
+            });
+
+            // Cerrar el modal de entradas cuando se haga clic fuera de él
+            window.onclick = function(event) {
+                const modal = document.getElementById('entradasModal');
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }

@@ -1,3 +1,11 @@
+function abrirmodal() {
+
+        const modal = document.getElementById('editModal');
+        modal.style.display = "block"; // Mostrar el modal
+        document.querySelector('.check-icon').classList.add('animate-check');
+
+}
+
 const stripe = Stripe('pk_test_51Q70TZJPTjj11sGIWsESON5DDd8zbKh57Y3QDG8xA7dcyfA3oh6hzHQTra7WKWdn1ky2t6nshoFEhgVWkRHB6GpI00boG1q4Cl');
 const elements = stripe.elements();
 
@@ -70,7 +78,6 @@ form.addEventListener('submit', async (event) => {
         .then((data) => {
             if (data.success) {
                 abrirmodal();
-                location.reload()
             } else {
                 document.querySelector('#error-message').textContent = 'Hubo un error al guardar la tarjeta'
             }

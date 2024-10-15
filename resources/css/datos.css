@@ -162,3 +162,7 @@
 .profile-section:active .edit-icon {
     display: block; /* Muestra el icono al hacer clic */
 }
+
+.hidden{
+  display: none;
+}

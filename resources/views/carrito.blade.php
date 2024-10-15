@@ -76,7 +76,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <label for="saved-cards">Usar una tarjeta guardada:</label>
                     <select name="saved_card" id="saved-cards" class="form-control">
-                        <option value="">Selecciona una tarjeta</option>
+                        <option value="" disabled selected>Selecciona una tarjeta</option>
                         @if (isset($cards) && $cards->isNotEmpty())
                             @foreach ($cards as $card)
                                 <option value="{{ $card->token }}">
@@ -99,7 +99,7 @@
                 <div id="error-message">
                     <!-- Display error message to your customers here -->
                 </div>
-
+                
                 <div class="infoPrecio">
                     <div>
                         <p>Subtotal</p>

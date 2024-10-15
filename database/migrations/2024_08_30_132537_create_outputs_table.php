@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('outputs', function (Blueprint $table) {
             $table->id();
             $table->integer('pay');
-            $table->string('user_DocId', 10);
-            $table->foreign('user_DocId')->references('DocId')->on('users');
+            $table->string('user_doc_id', 10);
+            $table->foreign('user_doc_id')->references('DocId')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

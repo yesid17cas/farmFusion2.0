@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Input;
+use App\Models\Low;
 use App\Models\Product;
+use App\Models\Productsinput;
+use App\Models\Productslow;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -28,7 +32,7 @@ class ProductController extends Controller
 
     // Método para almacenar un producto
 
-    
+
     public function store(Request $request)
     {
         // Validar los datos del formulario, incluida la imagen
@@ -36,35 +40,45 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'descrition' => 'required|string|max:255',
             'price' => 'required|integer',
-            'exits' => 'required|integer|min:0',
+            'exits' => 'required|integer',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación de la imagen
         ]);
-    
+
         // Limpiar el campo price
         $price = str_replace(['$', ','], '', $request->input('price'));
-    
+
         // Subir la imagen
         if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension(); 
+            $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $imageName); // Guardar la imagen en la carpeta 'img'
         }
-    
+
         // Obtener el ID del usuario autenticado
         $userId = auth()->id();
-    
+
         // Crear el producto en la base de datos
-        Product::create([
+        $product = Product::create([
             'name' => $request->input('name'),
             'descrition' => $request->input('descrition'),
             'price' => (int) $price,
-            'exits' => $request->input('exits'),
             'image' => $imageName, // Guardar el nombre de la imagen
             'user_DocId' => $userId,
         ]);
-    
+
+        $input = Input::create([
+            'user_DocId' => auth()->id()
+        ]);
+
+        Productsinput::create([
+            'products_id' => $product->id,
+            'inputs_id' => $input->id,
+            'amount' => $request->input('exits')
+        ]);
+
+
         return redirect()->route('misProductos')->with('success', 'Producto guardado exitosamente.');
     }
-    
+
 
     // Método para editar un producto (formulario)
     public function edit($id)
@@ -84,22 +98,21 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'descrition' => 'required|string|max:255',
             'price' => 'required|integer',
-            'exits' => 'required|integer|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación de imagen
         ]);
-        
+
         // Buscar el producto por su ID
         $producto = Product::findOrFail($id);
-    
+
         // Limpiar el campo price
         $price = str_replace(['$', ','], '', $request->input('price'));
-    
+
         // Actualizar el producto
         $producto->name = $request->input('name');
         $producto->descrition = $request->input('descrition');
         $producto->price = (int) $price;
         $producto->exits = $request->input('exits');
-    
+
         // Manejar la imagen
         if ($request->hasFile('image')) {
             // Eliminar la imagen antigua si existe
@@ -109,46 +122,70 @@ class ProductController extends Controller
                     unlink($oldImagePath);
                 }
             }
-    
+
             // Subir la nueva imagen
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $imageName);
-    
+
             // Actualizar el nombre de la imagen en el modelo
             $producto->image = $imageName;
         }
-    
+
         // Guardar los cambios
         $producto->save();
-    
+
         // Redirigir a la vista de misProductos
         return redirect()->route('misProductos')->with('success', 'Producto actualizado exitosamente.');
     }
-    
 
-    // Método para eliminar un producto
-    // public function destroy($id)
-    // {
-    //     // Buscar el producto por su ID y eliminarlo
-    //     $producto = Product::findOrFail($id);
-    //     $producto->delete();
+    public function bajas(Request $request)
+    {
+        $request->validate([
+            'producto_id' => 'required',
+            'cantidad' => 'required|integer'
+        ]);
 
-    //     // Redirigir a la página de listado de productos con un mensaje de éxito
-    //     return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
-    // }
+        $low = Low::create([
+            'reason' => $request->input('motivo'),
+            'user_DocId' => auth()->id()
+        ]);
 
+        Productslow::create([
+            'product_id' => $request->input('producto_id'),
+            'low_id' => $low->id,
+            'amount' => $request->input('cantidad')
+        ]);
 
+        return redirect()->route('misProductos');
+    }
 
+    public function entradas(Request $request)
+    {
+        $request->validate([
+            'producto_id' => 'required',
+            'cantidad' => 'required|integer'
+        ]);
 
+        $input = Input::create([
+            'user_DocId' => auth()->id()
+        ]);
+
+        Productsinput::create([
+            'products_id' => $request->input('producto_id'),
+            'inputs_id' => $input->id,
+            'amount' => $request->input('cantidad')
+        ]);
+
+        return redirect()->route('misProductos');
+    }
 
     // mostrar la info de los productos en el carrito
     public function show($id)
     {
-        // Busca el producto por su ID
-        $producto = Product::findOrFail($id);
+        // Busca el producto por su ID y carga las relaciones
+        $producto = Product::with(['productsoutput', 'productsoinput', 'productslow'])->findOrFail($id);
 
         // Retorna la vista con los datos del producto
         return view('infoProduc', compact('producto'));
     }
-
 }

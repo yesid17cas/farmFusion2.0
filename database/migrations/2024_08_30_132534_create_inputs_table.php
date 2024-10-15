@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('inputs', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('dateInput');
-            $table->integer('value');
             $table->string('user_DocId', 10);
             $table->foreign('user_DocId')->references('DocId')->on('users');
             $table->timestamps();

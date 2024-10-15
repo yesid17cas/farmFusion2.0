@@ -10,11 +10,11 @@ class Output extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['pay', 'user_DocId'];
+    protected $fillable = ['pay', 'user_doc_id'];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_DocId', 'DocId');
+        return $this->belongsTo(User::class, 'user_doc_id', 'DocId');
     }
 
     public function productsoutput(): HasMany

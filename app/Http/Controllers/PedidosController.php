@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PedidosController extends Controller
 {
     public function index() {
-        $pedidos= Output::where('user_DocId', auth()->id())->with('productsoutput.products')->get();
+        $pedidos= Output::where('user_doc_id', auth()->id())->with('productsoutput.products')->get();
 
         return view('pedidos', compact('pedidos'));
     }

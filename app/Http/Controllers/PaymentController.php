@@ -32,8 +32,11 @@ class PaymentController extends Controller
                 'payment_method' => $request->payment_method, // Token de la tarjeta guardado o ID del método de pago
                 'customer' => User::where('DocID', auth()->id())->value('stripe_customer_id'),
                 'confirm' => true,
-                'return_url' => route('factura'),
+                'return_url' => route('compras'),
             ]);
+            $direccion = $request->input('direccion');
+
+            session()->put('direccion', $direccion);
 
             return response()->json([
                 'success' => true,
@@ -48,10 +51,14 @@ class PaymentController extends Controller
         }
     }
 
-    public function createPaymentIntent()
+    public function createPaymentIntent(Request $request)
     {
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $direccion = $request->input('direccion');
+
+        session()->put('direccion', $direccion);
 
         $paymentIntent = \Stripe\PaymentIntent::create([
             'amount' => 1000,

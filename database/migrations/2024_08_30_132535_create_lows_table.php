@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('lows', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('reason_id')->constrained();
+            $table->string('reason');
             $table->string('user_DocId', 10);
             $table->foreign('user_DocId')->references('DocId')->on('users');
             $table->timestamps();

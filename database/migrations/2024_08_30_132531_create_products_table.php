@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('descrition');
             $table->integer('price');
-            $table->integer('exits');
             $table->string('image');
             $table->string('user_DocId', 10);
             $table->foreign('user_DocId')->references('DocId')->on('users');

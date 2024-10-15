@@ -19,8 +19,8 @@
                         </li>
                     </ul>
                 @else
-                    @foreach ($articulos as $product)
-                        <ul>
+                    <ul>
+                        @foreach ($articulos as $product)
                             <li>
                                 <img src="{{ asset('images/' . $product->image) }}" alt="">
                                 <div>
@@ -28,8 +28,8 @@
                                     <p>{{ $product->price }}</p>
                                 </div>
                             </li>
-                        </ul>
-                    @endforeach
+                        @endforeach
+                    </ul>
                 @endif
             @endif
         </div>

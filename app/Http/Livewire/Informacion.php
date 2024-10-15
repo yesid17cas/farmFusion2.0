@@ -69,7 +69,6 @@ class Informacion extends Component
             session()->flash('message', 'Datos actualizados correctamente.');
             $this->formVisible = !$this->formVisible;
             $this->lectura = !$this->lectura;
-            return redirect()->to('datos');
         }
     }
 

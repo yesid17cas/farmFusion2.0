@@ -411,7 +411,6 @@ input,
 textarea {
     padding: 17px;
     width: 100%;
-    height: 8vh;
     font-size: 1rem;
     background-color: #ffffff;
     border: #000 solid 1px;
@@ -431,7 +430,6 @@ textarea:focus ~ span {
 
 textarea {
     width: 100%;
-    min-height: 15em;
 }
 
 .input-container {
@@ -570,7 +568,6 @@ input[type=checkbox] + label {
 .icon {
     display: inline; /* Mostrar el ícono siempre */
     color: #fff; /* Color del ícono en blanco */
-    font-size: 28px; 
 }
 
 
@@ -650,16 +647,16 @@ input[type=checkbox] + label {
 
 /* Contenido del modal */
 .modal-content {
-    background-color: #fefefe; /* Fondo blanco */
-    margin: 5% auto; /* Centrar verticalmente */
-    padding: 20px; /* Espacio interno */
-    border: 1px solid #888; /* Borde gris */
-    border-radius: 8px; /* Bordes redondeados */
-    width: 90%; /* Ancho del modal */
-    max-width: 500px; /* Ancho máximo del modal */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-    overflow-y: auto; /* Scroll vertical si el contenido es demasiado largo */
-    max-height: 80vh; /* Altura máxima para el modal */
+    background-color: #fefefe;
+    margin: 0vh auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 504px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    max-height: 89vh;
 }
 
 /* Estilo para los títulos */

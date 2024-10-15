@@ -146,28 +146,22 @@
      
         document.addEventListener('DOMContentLoaded', (event) => {
             // Código para el modal
-
-            function abrirmodal() {
-                document.querySelector('#tarjeta_save').addEventListener('click', function() {
-                    const modal = document.getElementById('editModal');
-                    modal.style.display = "block"; // Mostrar el modal
-                    document.querySelector('.check-icon').classList.add('animate-check');
-                });
-           
-            }            
+    
 
             // Cerrar el modal
             document.querySelector('.close').addEventListener('click', function() {
-                document.getElementById('tarjeta_save').style.display = "none";
+                document.getElementById('editModal').style.display = "none";
                 document.querySelector('.check-icon').classList.remove('animate-check');
+                location.reload()
             });
 
             // Cerrar el modal cuando se haga clic fuera de él
             window.onclick = function(event) {
-                const modal = document.getElementById('tarjeta_save');
+                const modal = document.getElementById('editModal');
                 if (event.target == modal) {
                     modal.style.display = "none";
                     document.querySelector('.check-icon').classList.remove('animate-check');
+                    location.reload()
                 }
             }
 

@@ -16,7 +16,7 @@ class Recuperar extends Component
     public $password_confirmation;
 
     protected $rules=[
-        'password' => 'required|string|min:8|confirmed',
+        'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/',
     ];
 
     public function updated($propertyName)

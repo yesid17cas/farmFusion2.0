@@ -16,5 +16,15 @@ class Product extends Model
     {
         return $this->hasMany(Productsoutput::class); // Relación con el modelo 'Output'
     }
+
+    public function productsoinput(): HasMany
+    {
+        return $this->hasMany(Productsinput::class, 'products_id'); // Relación con el modelo 'Output'
+    }
+
+    public function productslow(): HasMany
+    {
+        return $this->hasMany(Productslow::class); // Relación con el modelo 'Output'
+    }
 }
 

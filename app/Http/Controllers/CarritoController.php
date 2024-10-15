@@ -66,7 +66,7 @@ class CarritoController extends Controller
 
         session()->put('total', $total);
 
-        return view('carrito', compact('carrito', 'subtotal', 'envio', 'total', 'cards'));
+        return view('carrito', compact('carrito', 'subtotal', 'envio', 'total', 'cards', 'direcciones'));
     }
 
     // Eliminar completamente el producto del carrito
@@ -118,9 +118,11 @@ class CarritoController extends Controller
 
         $total = session()->get('total', 0);
 
+        $direcciones= session()->get('direccion', []);
+
         $orders= Output::create([
             'pay' => $total,
-            'user_DocId' => auth()->user()->DocId
+            'user_doc_id' => auth()->user()->DocId,
         ]);
 
         $salidaId = $orders->id;

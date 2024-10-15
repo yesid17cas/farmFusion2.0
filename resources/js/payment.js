@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
 
     const savedCard = document.querySelector('select[name="saved_card"]').value;
+    const direccion= document.querySelector('select[name="direcciones"]').value
 
     try {
       if (savedCard) {
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Token CSRF de Laravel
           },
           body: JSON.stringify({
-            payment_method: savedCard // Aquí va el ID del método de pago o el token de la tarjeta guardada
+            payment_method: savedCard, // Aquí va el ID del método de pago o el token de la tarjeta guardada
           })
         })
           .then(function (response) {
@@ -45,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.json();
           })
           .then((result) => {
-            console.log(result)
             if (result.error) {
               document.querySelector('#error-message').textContent = result.error.message;
             } else {

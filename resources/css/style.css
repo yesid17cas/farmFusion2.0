@@ -1269,6 +1269,11 @@ button.nav-link {
   height: 50%;
 }
 
+.productBusqueda ul{
+  overflow-y: auto;
+  max-height: 54vh;
+}
+
 .productBusqueda li {
   list-style: none;
   display: flex;
@@ -1276,8 +1281,6 @@ button.nav-link {
   align-items: center;
   justify-content: space-around;
   margin-left: -3vw;
-  overflow-y: auto;
-  max-height: 54vh;
 }
 
 .productBusqueda li div h4 {

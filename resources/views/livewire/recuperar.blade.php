@@ -1,7 +1,6 @@
 <div>
     <div class="form-container sign-in-container">
-        <form method="POST" wire:submit='resetPassword'>
-            @csrf
+        <form wire:submit.prevent='resetPassword'>
 
             <input type="hidden" wire:model="token" value="{{ $token }}">
 
@@ -29,6 +28,12 @@
 
             <input id="password-confirm" type="password" wire:model="password_confirmation" required
                 autocomplete="new-password">
+
+            @if (session()->has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
             <button type="submit">
                 Restablecer
             </button>

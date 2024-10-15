@@ -15,7 +15,6 @@
             <h2>Detalles del Cliente</h2>
             <p><strong>N° Documento: </strong>{{ $output->user_DocId }} </p>
             <p><strong>Nombre:</strong> {{ $output->user->name }} {{ $output->user->lastname }} </p>
-            <p><strong>Dirección:</strong> Calle 123, Guarne</p>
             <p><strong>Correo:</strong> {{ $output->user->email }} </p>
         </section>
 

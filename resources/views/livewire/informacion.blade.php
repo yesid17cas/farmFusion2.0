@@ -40,8 +40,8 @@
         <div class="col-md-4 text-center">
             <div class="profile-section position-relative">
                 @if ($image)
-                    <img src="{{ $this->image->temporaryUrl() }}" alt="Vista previa"
-                        style="max-width: 300px; max-height: 300px;" />
+                    <img src="{{ $this->image->temporaryUrl() }}" alt="Foto de perfil" id="profile-img"
+                        class="profile-img" />
                 @elseif($datos->image)
                     <img id="profile-img" class="profile-img"
                         src="{{ $datos->image ? asset('storage/images/' . $datos->image) : Vite::asset('resources/img/Agricultora.jpg') }}"

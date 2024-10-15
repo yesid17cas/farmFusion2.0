@@ -41,15 +41,13 @@
         </div>
     </div>
 
-   
-
     <!-- Modal de agregar producto -->
     <div id="addProductModal" class="modal" style="display: none;">
         <div class="modal-content">
             <span class="close-add-product">&times;</span>
             <h2>Agregar Producto</h2>
 
-            <form id="addProductForm" method="POST" enctype="multipart/form-data">
+            <form id="addProductForm" method="POST" enctype="multipart/form-data" action="{{ route('products.store') }}">
                 @csrf
 
                 <div class="form-group">
@@ -59,7 +57,7 @@
 
                 <div class="form-group">
                     <label for="addProductDescription">Descripción:</label>
-                    <input type="text" id="addProductDescription" name="description" required>
+                    <input type="text" id="addProductDescription" name="descrition" required>
                 </div>
 
                 <div class="form-group">
@@ -112,7 +110,7 @@
                 <div class="form-group">
                     <label for="exits">Existencias:</label>
                     <input type="number" id="exits" name="exits" required>
-                </div> 
+                </div>
 
                 <div class="form-group">
                     <label for="image">Imagen:</label>
@@ -131,19 +129,20 @@
             <h2>Bajas</h2>
 
             <!-- Información del producto -->
-            <p>Nombre del Producto: <span id="bajasProductoNombre"></span></p>
+            <p>Nombre del Producto: <br> <span id="bajasProductoNombre"></span></p>
 
             <!-- Formulario de bajas -->
-            <form id="bajasForm" action="" method="POST">
+            <form id="bajasForm" method="POST">
                 @csrf
                 <input type="hidden" id="bajasProductId" name="producto_id" value="">
 
                 <div class="form-group">
                     <label for="bajasMotivo">Motivo de la Baja:</label>
-                    <textarea id="bajasMotivo" name="motivo" rows="4" cols="50" placeholder="Escribe el motivo de la baja..." required></textarea>
-                </div>
-
-                <p>¿Está seguro que desea eliminar este producto?</p>
+                    <textarea id="bajasMotivo" name="motivo" rows="5" cols="40"
+                        placeholder="Escribe el motivo de la baja..." required></textarea>
+                        <label for="cantidadBajas">Cantidad:</label>
+                        <input type="number" name="cantidad" placeholder="Cantidad">
+                </div><br>
 
                 <div class="button-container21">
                     <button type="submit" class="btn-lrg submit-btn">Confirmar</button>
@@ -154,49 +153,47 @@
     </div>
 
     <!-- Modal de entradas -->
-    <!-- Modal de entradas -->
     <div id="entradasModal" class="modal-entradas" style="display: none;">
-    <div class="modal-content-entradas">
-        <span class="close-entradas">&times;</span>
-        
-        <!-- Subtítulo -->
-        <h2 class="subtitulo-entradas">Entradas</h2>
+        <div class="modal-content-entradas">
+            <span class="close-entradas">&times;</span>
 
-        <form id="entradasForm" action="" method="POST">
-            @csrf
+            <!-- Subtítulo -->
+            <h2 class="subtitulo-entradas">Entradas</h2>
 
-            <input type="hidden" id="entradasProductId" name="producto_id" value="">
+            <form id="entradasForm" method="POST">
+                @csrf
 
-            <div class="containerForm">
-                <div class="row input-container-entradas">
-                    <div class="col-xs-12">
-                        <div class="styled-input wide">
-                            <label for="producto_nombre">Nombre del Producto:</label>
-                            <input class="inputcastaño" type="text" id="producto_nombre" name="producto_nombre" value="" disabled>
+                <input type="hidden" id="entradasProductId" name="producto_id" value="">
+
+                <div class="containerForm">
+                    <div class="row input-container-entradas">
+                        <div class="col-xs-12">
+                            <div class="styled-input wide">
+                                <label for="producto_nombre">Nombre del Producto:</label><br>
+                                <input class="inputcastaño" type="text" id="producto_nombre" name="producto_nombre"
+                                    value="" disabled>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Espacio entre el nombre del producto y la cantidad -->
-                    <div class="col-xs-12" style="height: 20px;"></div>
+                        <!-- Espacio entre el nombre del producto y la cantidad -->
+                        <div class="col-xs-12" style="height: 20px;"></div>
 
-                    <div class="col-md-6 col-sm-12">
-                        <div class="styled-input">
-                            
-                            <label for="cantidad">Cantidad de entradas:</label>
-                            <input class="inputcastaño" type="number" id="cantidad" name="cantidad" min="1" required>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="styled-input">
+
+                                <label for="cantidad">Cantidad de entradas:</label>
+                                <input class="inputcastaño" type="number" id="cantidad" name="cantidad"
+                                    min="1" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <button type="submit" class="btn-submit-entradas">Enviar</button>
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn-submit-entradas">Enviar</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
-
-
 @endsection
 
 @section('style')
@@ -246,6 +243,9 @@
                     document.getElementById('price').value = price;
                     document.getElementById('exits').value = exits;
 
+                    const editForm = document.getElementById('editForm');
+                    editForm.action = `/products/${id}`;
+
                     // Aquí puedes agregar el código para mostrar la imagen si lo deseas
                 });
             });
@@ -278,7 +278,7 @@
                     document.getElementById('bajasProductoNombre').textContent = name;
 
                     // Actualizar la acción del formulario con la URL correcta
-                    document.getElementById('bajasForm').action = `/products/${id}/bajas`;
+                    document.getElementById('bajasForm').action = `/bajas`;
                 });
             });
 
@@ -312,7 +312,10 @@
 
                     // Llenar la información del producto en el modal
                     document.getElementById('entradasProductId').value = id;
-                    document.getElementById('producto_nombre').value = name; // Se habilita solo en el modal
+                    document.getElementById('producto_nombre').value =
+                    name; // Se habilita solo en el modal
+                    const entradas = document.getElementById('entradasForm');
+                    entradas.action = `/entradas`;
                 });
             });
 

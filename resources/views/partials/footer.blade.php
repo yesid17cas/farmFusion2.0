@@ -66,19 +66,7 @@
                 Colombia
             </p>
             <p><i class="fa fa-phone-alt mr-2"></i>+57 3193517255</p>
-            <p><i class="fa fa-envelope mr-2"></i>farmfusion8@gmail.com</p>
-            <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px">
-                Ingresa
-            </h6>
-            <div class="w-100">
-                <div class="input-group">
-                    <input type="text" class="form-control border-light" style="padding: 25px"
-                        placeholder="Tu correo" />
-                    <div class="input-group-append">
-                        <button class="btn btn-primary px-3">Regístrate</button>
-                    </div>
-                </div>
-            </div>
+            <p><i class="fa fa-envelope mr-2"></i>farmfusion8@gmail.com</p> 
         </div>
     </div>
 </footer>

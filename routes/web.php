@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\UsuarioController;
@@ -26,8 +27,8 @@ Route::middleware('auth')->group(function () {
     // Productos creados usuario
     Route::get('/misProductos', [ProductController::class, 'index'])->name('misProductos'); // Muestra solo los productos del usuario logueado
 
-// Ruta para gestionar los productos (CRUD completo)
-Route::resource('products', ProductController::class)->except(['index','destroy']); // Elimina 'index' para evitar conflicto con la ruta '/misProductos'
+    // Ruta para gestionar los productos (CRUD completo)
+    Route::resource('products', ProductController::class)->except(['index','destroy']); // Elimina 'index' para evitar conflicto con la ruta '/misProductos'
 
     // Ruta para mostrar el catálogo de productos
     Route::get('/catalogo', [ProductController::class, 'catalogo'])->name('catalogo');
@@ -84,6 +85,12 @@ Route::resource('products', ProductController::class)->except(['index','destroy'
     Route::get('/eliminar', [CarritoController::class, 'limpiar'])->name('carrito.limpiar');
 
     // FIN RUTAS CARRITO
+
+    // Ruta para bajas
+    Route::post('/bajas', [ProductController::class, 'bajas'])->name('bajas');
+    
+    // Ruta para entradas
+    Route::post('/entradas', [ProductController::class, 'entradas'])->name('entradas');
 });
 
 // Ruta inicio de sesion

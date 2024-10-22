@@ -66,7 +66,7 @@
         </div>
     </div>
     <div class="Save">
-        <h2>Tus Trajetas Guardadas</h2>
+        <h2>Tus Tarjetas Guardadas</h2>
         @if (isset($cards) && $cards->isNotEmpty())
             @foreach ($cards as $card)
                 <div class="tarjeta__card">

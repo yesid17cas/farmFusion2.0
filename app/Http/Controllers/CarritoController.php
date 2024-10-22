@@ -57,7 +57,7 @@ class CarritoController extends Controller
         if ($subtotal == 0) {
             $envio=0;
         }else{
-            $envio=rand(0,10000);
+            $envio=5000;
         }
 
         $cards = Card::where('user_DocID', auth()->id())->get();
@@ -66,7 +66,7 @@ class CarritoController extends Controller
 
         session()->put('total', $total);
 
-        return view('carrito', compact('carrito', 'subtotal', 'envio', 'total', 'cards', 'direcciones'));
+        return view('carrito', compact('carrito', 'subtotal', 'envio', 'total', 'cards'));
     }
 
     // Eliminar completamente el producto del carrito
@@ -117,8 +117,6 @@ class CarritoController extends Controller
         $carrito= session()->get('carrito', []);
 
         $total = session()->get('total', 0);
-
-        $direcciones= session()->get('direccion', []);
 
         $orders= Output::create([
             'pay' => $total,

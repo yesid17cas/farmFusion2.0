@@ -11,6 +11,15 @@
                 <span class="text">Agregar Producto</span> <!-- Texto -->
             </a>
         </div>
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
         <div class="products-container">
             <!-- Mostrar todos los productos -->
@@ -24,7 +33,7 @@
                     <div class="product-actions">
                         <button class="edit-btn" data-id="{{ $producto->id }}" data-name="{{ $producto->name }}"
                             data-descrition="{{ $producto->descrition }}" data-price="{{ $producto->price }}"
-                            data-exits="{{ $producto->exits }}" data-image="{{ $producto->image }}">
+                            data-image="{{ $producto->image }}">
                             Editar
                         </button>
 
@@ -52,27 +61,38 @@
 
                 <div class="form-group">
                     <label for="addProductName">Nombre:</label>
-                    <input type="text" id="addProductName" name="name" required>
+                    <input type="text" id="addProductName" name="name" required placeholder="Nombre">
                 </div>
 
                 <div class="form-group">
                     <label for="addProductDescription">Descripción:</label>
-                    <input type="text" id="addProductDescription" name="descrition" required>
+                    <input type="text" id="addProductDescription" name="descrition" required placeholder="Descripcion">
                 </div>
 
                 <div class="form-group">
                     <label for="addProductPrice">Precio:</label>
-                    <input type="text" id="addProductPrice" name="price" required>
+                    <input type="text" id="addProductPrice" name="price" required placeholder="Precio">
                 </div>
 
                 <div class="form-group">
                     <label for="addProductExits">Existencias:</label>
-                    <input type="number" id="addProductExits" name="exits" required>
+                    <input type="number" id="addProductExits" name="exits" required placeholder="Existencia">
+                </div>
+
+                <div class="form-group">
+                    <label for="addProductUnity">Unidad de medida:</label><br>
+                    <select name="unity" id="addProductUnity">
+                        <option selected disabled>Selecciona Unidad</option>
+                        <option value="kilo">Kilo</option>
+                        <option value="libra">Libra</option>
+                        <option value="gramos">Gramos</option>
+                        <option value="unidad">Unidad</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="addProductImage">Imagen:</label>
-                    <input type="file" id="addProductImage" name="image" required>
+                    <input type="file" id="addProductImage" name="image" required accept=".jpeg, .png, .jpg, .gif">
                 </div>
 
                 <button type="submit" class="save-btn">Agregar Producto</button>
@@ -108,11 +128,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exits">Existencias:</label>
-                    <input type="number" id="exits" name="exits" required>
-                </div>
-
-                <div class="form-group">
                     <label for="image">Imagen:</label>
                     <input type="file" id="image" name="image">
                 </div>
@@ -140,8 +155,8 @@
                     <label for="bajasMotivo">Motivo de la Baja:</label>
                     <textarea id="bajasMotivo" name="motivo" rows="5" cols="40"
                         placeholder="Escribe el motivo de la baja..." required></textarea>
-                        <label for="cantidadBajas">Cantidad:</label>
-                        <input type="number" name="cantidad" placeholder="Cantidad">
+                    <label for="cantidadBajas">Cantidad:</label>
+                    <input type="number" name="cantidad" placeholder="Cantidad">
                 </div><br>
 
                 <div class="button-container21">
@@ -233,7 +248,6 @@
                     const name = this.getAttribute('data-name');
                     const descrition = this.getAttribute('data-descrition');
                     const price = this.getAttribute('data-price');
-                    const exits = this.getAttribute('data-exits');
                     const image = this.getAttribute('data-image');
 
                     // Llenar la información del producto en el modal
@@ -241,7 +255,6 @@
                     document.getElementById('name').value = name;
                     document.getElementById('descrition').value = descrition;
                     document.getElementById('price').value = price;
-                    document.getElementById('exits').value = exits;
 
                     const editForm = document.getElementById('editForm');
                     editForm.action = `/products/${id}`;
@@ -313,7 +326,7 @@
                     // Llenar la información del producto en el modal
                     document.getElementById('entradasProductId').value = id;
                     document.getElementById('producto_nombre').value =
-                    name; // Se habilita solo en el modal
+                        name; // Se habilita solo en el modal
                     const entradas = document.getElementById('entradasForm');
                     entradas.action = `/entradas`;
                 });

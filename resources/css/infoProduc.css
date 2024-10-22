@@ -13,6 +13,7 @@
 	grid-column-start: 2;
 	margin-left: -17vw;
 	font-size: 1.4vw;
+	width: 80%;
 }
 .informacion__datos b:first-child {
 	font-size: 3vw;

@@ -36,6 +36,7 @@
             ?>
 
             <p>Existencias: {{ $total }}</p>
+            <p>Vendido por: {{$producto->unity}} </p>
             <p>
                 <h3>Descripción</h3><br />
                 {{ $producto->descrition }}

@@ -3,9 +3,15 @@
     <form action="" class="lectura {{ $lectura ? '' : 'hidden' }}">
         <div class="col-md-4 text-center">
             <div class="profile-section position-relative">
-                <img id="profile-img" class="profile-img"
-                    src="{{ $datos->image ? asset('storage/images/' . $datos->image) : Vite::asset('resources/img/Agricultora.jpg') }}"
-                    alt="Foto de perfil" />
+                @if ($image)
+                    <!-- Vista previa de la imagen seleccionada -->
+                    <img id="profile-img" class="profile-img" src="{{ $image->temporaryUrl() }}" alt="Foto de perfil" />
+                @else
+                    <!-- Imagen actual o imagen por defecto -->
+                    <img id="profile-img" class="profile-img"
+                        src="{{ $datos->image ? asset('storage/images/' . $datos->image) : Vite::asset('resources/img/Agricultora.jpg') }}"
+                        alt="Foto de perfil" />
+                @endif
             </div>
             <br>
         </div>
@@ -27,10 +33,6 @@
                     <label class="labels">Correo</label><br>
                     <label for="" class="info">{{ $datos->email }}</label>
                 </div><br>
-                <div class="col-md-12">
-                    <label class="labels">Dirección</label><br>
-                    <a href="">Ver Direcciones</a>
-                </div><br>
             </div>
         </div>
         <button class="btn btn-primary profile-button" type="button" wire:click="toggleForm">Editar</button>
@@ -40,9 +42,10 @@
         <div class="col-md-4 text-center">
             <div class="profile-section position-relative">
                 @if ($image)
-                    <img src="{{ $this->image->temporaryUrl() }}" alt="Foto de perfil" id="profile-img"
-                        class="profile-img" />
-                @elseif($datos->image)
+                    <!-- Vista previa de la imagen seleccionada -->
+                    <img id="profile-img" class="profile-img" src="{{ $image->temporaryUrl() }}" alt="Foto de perfil" />
+                @else
+                    <!-- Imagen actual o imagen por defecto -->
                     <img id="profile-img" class="profile-img"
                         src="{{ $datos->image ? asset('storage/images/' . $datos->image) : Vite::asset('resources/img/Agricultora.jpg') }}"
                         alt="Foto de perfil" />
@@ -87,10 +90,6 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div><br>
-                <div class="col-md-12">
-                    <label class="labels">Dirección</label><br>
-                    <a href="">Ver direcciones</a>
                 </div><br>
                 <div class="mt-5 text-center">
                     <button class="btn btn-primary profile-button edit-btn" type="submit">Guardar datos</button>

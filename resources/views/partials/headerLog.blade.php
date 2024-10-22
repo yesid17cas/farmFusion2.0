@@ -17,6 +17,7 @@
                             <li><a href="{{route('tarjeta')}}" class="nav-item nav-link {{request()->routeIs('config') ? 'active' : ''}}">Tarjetas</a></li>
                             <li><a href="{{route('carrito.ver')}}" class="nav-item nav-link {{request()->routeIs('carrito.ver') ? 'active' : ''}}">Carrito</a></li>
                             <li><a href="{{route('compras')}}" class="nav-item nav-link {{request()->routeIs('compras') ? 'active' : ''}}">Lista de compras</a></li>
+                            <li><a href="{{route('ventas')}}" class="nav-item nav-link {{request()->routeIs('ventas') ? 'active' : ''}}">Mis Ventas</a></li>
                         </div>
                     </div>
                 </div>

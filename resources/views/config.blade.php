@@ -28,7 +28,6 @@
                     <div class="buttons mt-3">
                         <a href="{{route('misDatos')}}" class="btn btn-primary"><i class="fa-solid fa-user"></i> Mis datos</a>
                         <a href="{{route('tarjeta')}}" class="btn btn-primary"><i class="fa-solid fa-credit-card"></i> Tarjetas</a>
-                        <a href="#" class="btn btn-primary"><i class="fa-solid fa-map-marker-alt"></i> Direcciones</a>
                     </div>
                 </div>
             </div>

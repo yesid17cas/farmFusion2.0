@@ -16,8 +16,10 @@ class Register extends Component
     public $email;
     public $password;
     public $password_confirmation;
+    public $tipo;
     
     protected $rules = [
+        'tipo' => 'required',
         'DocId' => 'required|numeric|max:9999999999|min:11111111|unique:users,DocId',
         'name' => 'required|string|max:255',
         'lastname' => 'required|string|max:255',
@@ -37,6 +39,7 @@ class Register extends Component
         $this->validate();
         
         $user = User::create([
+            'tipo' => $this->tipo,
             'DocId' => $this->DocId,
             'name' => $this->name,
             'lastname' => $this->lastname,

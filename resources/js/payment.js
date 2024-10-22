@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
 
     const savedCard = document.querySelector('select[name="saved_card"]').value;
-    const direccion= document.querySelector('select[name="direcciones"]').value
 
     try {
       if (savedCard) {

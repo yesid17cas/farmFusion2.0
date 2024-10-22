@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->string('DocId', 10)->primary();
+            $table->string('tipo');
             $table->string('name');
             $table->string('lastname');
             $table->string('image')->nullable();

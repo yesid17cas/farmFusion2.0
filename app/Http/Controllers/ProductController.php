@@ -22,13 +22,20 @@ class ProductController extends Controller
     }
 
     // mostrar los productos en catalogo
-    public function catalogo()
+    public function catalogo(Request $request)
     {
-        $productos = Product::all();
+        // Capturar el valor de la unidad de medida seleccionada en el filtro
+        $unidad = $request->input('unidad');
 
-        // Retornar la vista 'catalogo' con la lista de productos
-        return view('catalogo', compact('productos'));
+        // Aplicar el filtro si se selecciona una unidad, o mostrar todos los productos
+        $productos = Product::when($unidad, function ($query, $unidad) {
+            return $query->where('unity', $unidad);
+        })->get();
+
+        // Retornar la vista 'catalogo' con la lista de productos filtrados
+        return view('catalogo', compact('productos', 'unidad'));
     }
+
 
     // Método para almacenar un producto
 
@@ -38,9 +45,10 @@ class ProductController extends Controller
         // Validar los datos del formulario, incluida la imagen
         $request->validate([
             'name' => 'required|string|max:255',
-            'descrition' => 'required|string|max:255',
+            'descrition' => 'required|string|max:1000',
             'price' => 'required|integer',
             'exits' => 'required|integer',
+            'unity' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación de la imagen
         ]);
 
@@ -62,6 +70,7 @@ class ProductController extends Controller
             'descrition' => $request->input('descrition'),
             'price' => (int) $price,
             'image' => $imageName, // Guardar el nombre de la imagen
+            'unity' => $request->input('unity'),
             'user_DocId' => $userId,
         ]);
 
@@ -96,7 +105,7 @@ class ProductController extends Controller
         // Validar los datos del formulario
         $request->validate([
             'name' => 'required|string|max:255',
-            'descrition' => 'required|string|max:255',
+            'descrition' => 'required|string',
             'price' => 'required|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación de imagen
         ]);
@@ -111,7 +120,6 @@ class ProductController extends Controller
         $producto->name = $request->input('name');
         $producto->descrition = $request->input('descrition');
         $producto->price = (int) $price;
-        $producto->exits = $request->input('exits');
 
         // Manejar la imagen
         if ($request->hasFile('image')) {

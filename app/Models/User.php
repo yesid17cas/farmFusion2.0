@@ -29,7 +29,8 @@ class User extends Authenticatable
         'image',
         'email',
         'password',
-        'stripe_customer_id'
+        'stripe_customer_id',
+        'tipo'
     ];
 
     /**

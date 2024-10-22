@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CarritoController;
-use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\UsuarioController;
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Auth;
 
 Route::view('/', 'index')->name('home');
@@ -60,6 +60,9 @@ Route::middleware('auth')->group(function () {
 
     // Lista de compras
     Route::get('/compras', [PedidosController::class, 'index'])->name('compras');
+
+    // Lista ventas
+    Route::get('/ventas', [PedidosController::class, 'ventas'])->name('ventas');
 
     // facturas
     Route::get('/pedidos/{id}', [PedidosController::class, 'show'])->name('pedidos.show');

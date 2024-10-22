@@ -2,6 +2,19 @@
     <form wire:submit.prevent="createUser">
         <h1>Registrarse</h1>
         <span>Utiliza tu correo electrónico para registrarte</span>
+
+        {{-- Campo Tipo --}}
+        <select wire:model='tipo'>
+            <option  selected disabled>Selecciona tipo de documento</option>
+            <option value="ciudadania">Cedula de ciudadania</option>
+            <option value="extranjeria">Cedula de extranjeria</option>
+        </select>
+        @error('tipo')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+
         {{-- Campo DocId --}}
         <input id="DocId" wire:model="DocId" type="number" placeholder="Numero Documento" value="{{ old('DocId') }}"
             required autocomplete="DocId" />

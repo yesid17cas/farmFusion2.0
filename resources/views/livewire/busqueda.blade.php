@@ -21,13 +21,15 @@
                 @else
                     <ul>
                         @foreach ($articulos as $product)
-                            <li>
-                                <img src="{{ asset('images/' . $product->image) }}" alt="">
-                                <div>
-                                    <h4>{{ $product->name }}</h4>
-                                    <p>{{ $product->price }}</p>
-                                </div>
-                            </li>
+                            <a href="{{ route('products.show', $product->id) }}">
+                                <li>
+                                    <img src="{{ asset('images/' . $product->image) }}" alt="">
+                                    <div>
+                                        <h4>{{ $product->name }}</h4>
+                                        <p>{{ $product->price }}</p>
+                                    </div>
+                                </li>
+                            </a>
                         @endforeach
                     </ul>
                 @endif

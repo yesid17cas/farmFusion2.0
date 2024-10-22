@@ -34,9 +34,6 @@ class PaymentController extends Controller
                 'confirm' => true,
                 'return_url' => route('compras'),
             ]);
-            $direccion = $request->input('direccion');
-
-            session()->put('direccion', $direccion);
 
             return response()->json([
                 'success' => true,
@@ -55,10 +52,6 @@ class PaymentController extends Controller
     {
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-        $direccion = $request->input('direccion');
-
-        session()->put('direccion', $direccion);
 
         $paymentIntent = \Stripe\PaymentIntent::create([
             'amount' => 1000,

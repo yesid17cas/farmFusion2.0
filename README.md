@@ -31,9 +31,9 @@ cp .env.example .env
 
 # Generar clave de aplicación
 php artisan key:generate
-
+```
 ## Uso
-
+```bash
 # Ejecutar migraciones
 php artisan migrate
 

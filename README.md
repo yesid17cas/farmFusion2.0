@@ -1,4 +1,4 @@
-<h1>FramFusion </h1>
+<h1>FarmFusion </h1>
 
 Este proyecto es una plataforma de comercio electrónico que conecta a pequeños productores campesinos con consumidores interesados en productos frescos, locales y sostenibles. Permite a los campesinos vender directamente sus productos agrícolas, eliminando intermediarios y asegurando precios justos. Los consumidores pueden explorar una variedad de productos naturales, realizar compras y recibirlos directamente en sus hogares.
 
